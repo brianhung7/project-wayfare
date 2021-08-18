@@ -1,6 +1,30 @@
+.carousel-container___home {
+    width: 100%;
+}
+
+.carousel-item > img {
+    max-height: 600px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    max-width: 2000px;
+}
+
+
 footer{
     position:absolute;
     bottom:0;
     width: 100%;
     
+}
+
+@media (min-width: 1800px) {
+    .carousel-container___home{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+    .carousel{
+        width: 1500px;
+        
+    }
 }
