@@ -1,6 +1,31 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>HOME</h1>
+<!-- Carousel -->
+<div class="carousel-container___home">
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <!-- The images for the carousel -->
+        <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="https://images.unsplash.com/photo-1514565131-fce0801e5785?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGNpdHl8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="https://i2.wp.com/movingtips.wpengine.com/wp-content/uploads/2019/07/new-york2.jpg?fit=1024%2C684&ssl=1" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="https://media.architecturaldigest.com/photos/58f918044f42bd463db36a3f/16:9/w_1280,c_limit/1%2520-%252010%2520Greenest%2520Cities%2520in%2520America%2520in%25202017.jpg" class="d-block w-100" alt="...">
+        </div>
+        </div>
 
+        <!-- Buttons to control the carousel -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
 {% endblock %}
