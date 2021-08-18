@@ -43,7 +43,7 @@ footer{
     
 }
 
-@media (min-width: 1800px) {
+@media (min-width: 1500px) {
     .carousel-container___home{
         display: flex;
         width: 100%;
