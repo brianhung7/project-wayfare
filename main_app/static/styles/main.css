@@ -1,3 +1,28 @@
+* {
+    margin: 0;
+}
+
+body {
+    background: linear-gradient(to bottom, #ebfcf8 0%, #b0f3ec 100%);
+}
+
+.navbar {
+    background-color: #b0f3ec;
+}
+
+.navbar-brand {
+    text-decoration: none;
+    color: #2b3e44;
+}
+
+#signin {
+    background-color: #5ccbaf;
+}
+
+#signup {
+    background-color: #5ccbaf;
+}
+
 .carousel-container___home {
     width: 100%;
 }
