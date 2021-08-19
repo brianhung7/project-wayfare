@@ -25,7 +25,7 @@
 
     <nav class="navbar">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'home' %}" id="nav-brand">Wayfarer</a>
+        <a class="navbar-brand" href="{% url 'home' %}" id="nav-brand"><i class="fas fa-walking"></i>    Wayfarer</a>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             {% if user.is_authenticated %}
                 <span class="mt-2 me-2">Welcome: {{user.username}}</span>
@@ -95,6 +95,14 @@
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
                             {{ signup_form.password2|add_class:"form-control"|attr:"placeholder:Confirm Password" }}
                         </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1"><i class="fas fa-city"></i></span>
+                            {{ profile_form.current_city|add_class:"form-control"|attr:"placeholder:Current City" }}
+                        </div>
+                         <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1"><i class="fas fa-user-tie"></i></span>
+                            {{ profile_form.avatar|add_class:"form-control"|attr:"placeholder:Avatar"}}
+                        </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">Close</button>
@@ -110,7 +118,7 @@
 </body>
 
 <footer>
-    <div class="text-center p-4">
+    <div class="text-center p-4 fixed-bottom">
     © 2021 Copyright:
     <a class="text-reset fw-bold" href="{% url 'home' %}">Project Wayfarer</a>
     </div>

@@ -81,9 +81,21 @@ body {
     font-family: 'Esteban', serif;
 }
 
+#update {
+    background-color: #5ccbaf;
+    color: #ebfcf8;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#post-btn{
+    background-color: #5ccbaf;
+    color: #ebfcf8;
+    font-family: 'Montserrat', sans-serif;
+}
+
 
 footer{
-    position:absolute;
+    position:static;
     bottom:0;
     color: #2b3e44;
     font-family: 'Montserrat', sans-serif;
