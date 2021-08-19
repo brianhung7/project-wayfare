@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic.base import TemplateView
+from django.views.generic.edit import UpdateView
 from django.views import View
 from django.views.generic import DetailView
 from .models import Post, City
@@ -7,6 +8,7 @@ from .models import Post, City
 
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from .forms import UserUpdateForm, ProfileUpdateForm
 # Create your views here.
 class Home(TemplateView):
     template_name= 'home.html'
@@ -45,6 +47,22 @@ class Profile(TemplateView):
         context['posts'] = Post.objects.filter(user=self.request.user)
 
         return context
+
+
+class UpdateProfile(View):
+    #get route -> Handles displaying of user and profile update forms
+    def get(self, request):
+        form_one = UserUpdateForm()
+        form_two = ProfileUpdateForm()
+        context = {
+            "form_one": form_one,
+            "form_two": form_two
+        }
+        return render(request, "update/updateUser.html", context)
+
+    #post route -> saves form information and retuns to the user profile page
+    def post(self, request):
+        print(request)
 
 class PostDetail(DetailView):
     model = Post
