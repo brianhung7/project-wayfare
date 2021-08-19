@@ -20,8 +20,14 @@
     <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'home' %}">Wayfarer</a>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button class="btn me-md-2" type="button" data-bs-toggle="modal" data-bs-target="#sign-in-modal" id="signin">Sign In</button>
-            <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#sign-up-modal" id="signup">Sign Up</button>
+            {% if user.is_authenticated %}
+                <span>Welcome: {{user.username}}</span>
+                <a href="{% url 'profile'%}"> Profile </a>
+                <a href="{% url 'logout'%}"> Logout </a>
+            {% else %}
+                <button class="btn me-md-2" type="button" data-bs-toggle="modal" data-bs-target="#sign-in-modal" id="signin">Sign In</button>
+                <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#sign-up-modal" id="signup">Sign Up</button>
+            {% endif %}
         </div>
     </div>
     </nav>
