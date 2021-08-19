@@ -6,7 +6,7 @@ from django.views.generic import DetailView
 from .models import Post, City, Profile
 
 
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from .forms import UserUpdateForm, ProfileUpdateForm
 # Create your views here.
@@ -16,7 +16,9 @@ class Home(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         signup_form = UserCreationForm()
+        profile_form = ProfileUpdateForm()
         context["signup_form"] = signup_form
+        context["profile_form"] = profile_form
         return context
 
 class Signup(View):
@@ -29,18 +31,22 @@ class Signup(View):
 
     def post(self,request):
         form = UserCreationForm(request.POST)
+        profile_form = ProfileUpdateForm(request.POST)
         if form.is_valid():
             # create our user in the database
             user = form.save()
-            user.refresh_from_db()  # load the profile instance created by the signal
-            #user.profile = Profile(user, 'current_city_id' = 1,)
-            # user.profile.current_city = 1
-            # user.profile.avatar = 'https://i.imgur.com/QMxdIUh.jpeg' 
+            #user.refresh_from_db()  # load the profile instance created by the signal
+
+            print(user)
+            profile = profile_form.save(commit=False)
+            profile.user = user
+            profile.save()
+            print(profile)
             user.save()
             login(request, user)
             return redirect("home")
         else:
-            context = {"form": form}
+            context = {"form": form, "profile_form": profile_form}
             return render(request, "registration/signup.html", context)
 
 
