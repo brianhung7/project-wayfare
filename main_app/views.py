@@ -60,14 +60,17 @@ class Profile(TemplateView):
         return context
 
 
-class UpdateProfile(View):
+class UpdateProfile(UpdateView):
     #get route -> Handles displaying of user and profile update forms
     def get(self, request):
+        #request.user -> The current logged in user
+        #request.user.email -> The current users email
         form_one = UserUpdateForm()
         form_two = ProfileUpdateForm()
         context = {
             "form_one": form_one,
-            "form_two": form_two
+            "form_two": form_two,
+            "user": request.user
         }
         return render(request, "update/updateUser.html", context)
 
@@ -75,11 +78,20 @@ class UpdateProfile(View):
     def post(self, request):
         form_one = UserUpdateForm(request.POST)
         form_two = ProfileUpdateForm(request.POST)
+        print("~~~~~ POST SUBMISSION ~~~~~")
         print(request.POST)
+        print(form_one.is_valid())
+        print(form_two.is_valid())
+        print("~~~~~ POST SUBMISSION ~~~~~")
         if form_one.is_valid() and form_two.is_valid():
             form_one.save()
-            form_two.save()
+            form_two.save()  #FIXME: NOT SAVING DATA BECAUSE DATA DIDNT VALIDATE
             return redirect("profile")
+        else:
+            print("~~~ INVALID INPUTS ~~~~")
+            print(form_one.errors)
+            print(form_two.errors)
+            print("~~~ INVALID INPUTS ~~~~")
 
 class PostDetail(DetailView):
     model = Post
