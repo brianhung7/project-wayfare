@@ -11,7 +11,7 @@ from django.contrib.auth.models import User
 
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
-from .forms import UserUpdateForm, ProfileUpdateForm
+from .forms import UserUpdateForm, ProfileUpdateForm, ProfileCreateForm
 # Create your views here.
 class Home(TemplateView):
     template_name= 'home.html'
@@ -34,7 +34,7 @@ class Signup(View):
 
     def post(self,request):
         form = UserCreationForm(request.POST)
-        profile_form = ProfileUpdateForm(request.POST)
+        profile_form = ProfileCreateForm(request.POST)
         if form.is_valid():
             # create our user in the database
             user = form.save()
