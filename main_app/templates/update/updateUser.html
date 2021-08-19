@@ -3,8 +3,9 @@
 
     <form method="POST" action="{ url 'update_profile' }">
         {% csrf_token %}
-        {{form_one}}
-        {{form_two}}
+        {{form_one.as_p}}
+        {{form_two.as_p}}
+        <input type="submit">
     </form>
 
 {% endblock %}
