@@ -13,6 +13,10 @@
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Esteban&family=Montserrat:wght@200;500&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="{% static 'styles/main.css' %}" />
     <script src="{% static "scripts/main.js" %}" defer></script>
 </head>
@@ -20,7 +24,7 @@
 
     <nav class="navbar">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'home' %}">Wayfarer</a>
+        <a class="navbar-brand" href="{% url 'home' %}" id="nav-brand">Wayfarer</a>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             {% if user.is_authenticated %}
                 <span class="mt-2 me-2">Welcome: {{user.username}}</span>
