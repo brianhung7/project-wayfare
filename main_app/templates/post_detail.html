@@ -2,10 +2,11 @@
 
 
 {% block content %}
- Post Detail
-    <p>Author: {{post.user.username}}</p>
-    <p>City: {{post.city.name}}</p>
-    <p>Title: {{post.title}} </p>
-    <p>Content: {{post.content}} </p>
-
+    <div class="d-flex align-items-center flex-column">
+        <h2>Title: {{post.title}} </h2>
+        <h2>City: {{post.city.name}}</h2>
+        <img src="{{post.city.img}}" alt="" srcset="" width = 1000px height=500px>
+        <h3>Author: {{post.user.username}}</h3>
+        <p class="mx-5" style="width:70%">Content: {{post.content}} Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem delectus corrupti necessitatibus mollitia, in illum fuga doloribus aspernatur id adipisci commodi, maiores nihil nisi animi alias veritatis debitis itaque quam.</p>
+    </div>
 {% endblock %}
