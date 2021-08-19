@@ -2,28 +2,36 @@
 
 {% block content %}
 
-<div class="row mt-5">
+<div class="row mt-5" id="title">
     <div class="col-md-4 d-flex flex-column align-items-center">
 
-        <h1>{{user.username}}'s Profile</h1>
+        <h3>{{user.username}}'s Profile</h3>
 
-        <img src="{{user.profile.avatar}}" alt="" srcset="" width=450px>
-        <h2>Current City: {{user.profile.current_city}}</h2>
+        <img class="m-3" src="{{user.profile.avatar}}" alt="" srcset="" width=250px>
+        <h3>Current City: {{user.profile.current_city}}</h3>
         <p>Join Date: {{user.date_joined}}</p>
-        <a href="{% url 'update_profile'%}">Update Profile</a>
+        <a class="btn" href="{% url 'update_profile'%}" id="update">Update Profile</a>
 
     </div>
     
     <div class="col-md-8" style="text-align:center">
-        <h1 style="text-align:center">{{user.username}}'s Posts: </h1>
+        <h1 style="text-align:center">{{user.username}}'s Posts </h1>
         <div class="row row-cols-3">
         {% for post in posts %}
-            <div style="font-size:22px" class="mt-3">
+            {% comment %} <div style="font-size:22px" class="mt-3">
                 <!--<img src="{{user.profile.avatar}}" alt="" srcset="" width = 75px>-->
                 {{post.city}} - 
                 <a href="{% url 'post_detail' post.pk %}">{{post.title}}</a> 
                 <div><img src="{{post.city.img}}" alt="" srcset="" width=250px> </div>
                 <!--{{post.content}}-->
+            </div> {% endcomment %}
+            <div class="card ms-1 me-1" style="width: 18rem;">
+                <img src="{{post.city.img}}" class="card-img-top mt-2" alt="{{post.city}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{post.title}}</h5>
+                    <p class="card-text" id="content">{{post.content}}</p>
+                    <a href="{% url 'post_detail' post.pk %}" class="btn" id="post-btn">{{post.title}}</a>
+                </div>
             </div>
         {% empty %}
             <p></p>
