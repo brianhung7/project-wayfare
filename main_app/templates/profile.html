@@ -8,14 +8,14 @@
         <h3>{{user.username}}'s Profile</h3>
 
         <img class="m-3" src="{{user.profile.avatar}}" alt="" srcset="" width=250px>
-        <h3>Current City: {{user.profile.current_city}}</h3>
+        <p>Current City: {{user.profile.current_city}}</p>
         <p>Join Date: {{user.date_joined}}</p>
-        <a class="btn" href="{% url 'update_profile' user.pk%}" id="update">Update Profile</a>
+        <a class="btn" href="{% url 'update_profile'%}" id="update">Update Profile</a>
 
     </div>
     
     <div class="col-md-8" style="text-align:center">
-        <h1 style="text-align:center">{{user.username}}'s Posts </h1>
+        <h3 style="text-align:center">{{user.username}}'s Posts </h3>
         <div class="row row-cols-3">
         {% for post in posts %}
             {% comment %} <div style="font-size:22px" class="mt-3">

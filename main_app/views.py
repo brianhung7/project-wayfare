@@ -1,16 +1,17 @@
+from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import UpdateView
 from django.views import View
 from django.views.generic import DetailView
 from .models import Post, City, Profile
-from django.urls import reverse
+from django.db import models
 from django.contrib.auth.models import User
 
 
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
-from .forms import UserUpdateForm, ProfileUpdateForm
+from .forms import UserUpdateForm, ProfileUpdateForm, ProfileCreateForm
 # Create your views here.
 class Home(TemplateView):
     template_name= 'home.html'
@@ -33,7 +34,7 @@ class Signup(View):
 
     def post(self,request):
         form = UserCreationForm(request.POST)
-        profile_form = ProfileUpdateForm(request.POST)
+        profile_form = ProfileCreateForm(request.POST)
         if form.is_valid():
             # create our user in the database
             user = form.save()
@@ -63,47 +64,25 @@ class ProfileView(TemplateView):
 
 
 class UpdateProfile(UpdateView):
-    # #get route -> Handles displaying of user and profile update forms
-    # def get(self, request):
-    #     #request.user -> The current logged in user
-    #     #request.user.email -> The current users email
-    #     form_one = UserUpdateForm()
-    #     form_two = ProfileUpdateForm()
-    #     context = {
-    #         "form_one": form_one,
-    #         "form_two": form_two,
-    #         "user": request.user
-    #     }
-    #     return render(request, "update/updateUser.html", context)
+    #get route -> Handles displaying of user and profile update forms
+    def get(self, request):
+        #request.user -> The current logged in user
+        #request.user.email -> The current users email
+        # form_one = UserUpdateForm()
+        # form_two = ProfileUpdateForm()
+        context = {
+            "user": request.user
+        }
+        return render(request, "update/updateUser.html", context)
 
-    # #post route -> saves form information and retuns to the user profile page
-    # def post(self, request):
-    #     form_one = UserUpdateForm(request.POST)
-    #     form_two = ProfileUpdateForm(request.POST)
-    #     print("~~~~~ POST SUBMISSION ~~~~~")
-    #     print(request.POST)
-    #     print(form_one.is_valid())
-    #     print(form_two.is_valid())
-    #     print("~~~~~ POST SUBMISSION ~~~~~")
-    #     if form_one.is_valid() and form_two.is_valid():
-    #         user = form_one.save()
-    #         profile = form_two.save()
-    #         profile.user = user
-    #         profile.save()
-    #         user.save()
-    #         return redirect("profile")
-    #     else:
-    #         print("~~~ INVALID INPUTS ~~~~")
-    #         print(form_one.errors)
-    #         print(form_two.errors)
-    #         print("~~~ INVALID INPUTS ~~~~")
-    model = Profile
-    fields = ['current_city']
-    template_name = 'update/updateUser.html'
+    #post route -> saves form information and retuns to the user profile page
+    def post(self, request):
+        
+        Profile.objects.filter(user = request.user).update(current_city = request.POST["current_city"])
+        User.objects.filter(username = request.user).update(username = request.POST["username"])
+        
+        return redirect('profile_view')
 
-    def get_success_url(self):
-        # go to /artists/pk
-        return reverse("profile_view")
 
 class PostDetail(DetailView):
     model = Post
