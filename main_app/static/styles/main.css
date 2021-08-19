@@ -1,5 +1,6 @@
 * {
     margin: 0;
+    padding: 0;
 }
 
 body {
@@ -93,14 +94,15 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+#post-avatar {
+    border-radius: 50px;
+}
+
 
 footer{
-    position:static;
-    bottom:0;
     color: #2b3e44;
     font-family: 'Montserrat', sans-serif;
     width: 100%;
-    
 }
 
 @media (min-width: 1500px) {
