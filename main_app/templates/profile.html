@@ -2,24 +2,31 @@
 
 {% block content %}
 
-<h1>PROFILE</h1>
+<div class="row">
+    <div class="col-md-6">
+        <h1>PROFILE</h1>
 
-{{user.username}}
+        <p>Username: {{user.username}}</p>
 
-<img src="{{user.profile.avatar}}" alt="" srcset="">
-{{user.profile.current_city}}
-{{user.date_joined}}
+        <img src="{{user.profile.avatar}}" alt="" srcset="">
+        <p>Current City: {{user.profile.current_city}}</p>
+        <p>Join Date: {{user.date_joined}}</p>
 
-
-<div>
-    {% for post in posts %}
-        <div>
-            {{post.city}} - 
-            <a href="{% url 'post_detail' post.pk %}">{{post.title}}</a> - 
-            {{post.content}}
-        </div>
-    {% empty %}
-        <p>No Posts to show!</p>
-    {% endfor %}
+    </div>
+    
+    <div class="col-md-6">
+        <h1>Posts: </h1>
+    
+        {% for post in posts %}
+            <div>
+                <img src="{{user.profile.avatar}}" alt="" srcset="" width = 75px>
+                {{post.city}} - 
+                <a href="{% url 'post_detail' post.pk %}">{{post.title}}</a> - 
+                {{post.content}}
+            </div>
+        {% empty %}
+            <p>No Posts to show!</p>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}

@@ -3,8 +3,9 @@
 
 {% block content %}
  Post Detail
-    <p>User: {{post.user.username}}</p>
+    <p>Author: {{post.user.username}}</p>
+    <p>City: {{post.city.name}}</p>
     <p>Title: {{post.title}} </p>
-    <p>Content: {{post.content}}</p>
+    <p>Content: {{post.content}} </p>
 
 {% endblock %}
