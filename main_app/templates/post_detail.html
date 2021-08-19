@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+ Post Detail
+    <p>Author: {{post.user.username}}</p>
+    <p>City: {{post.city.name}}</p>
+    <p>Title: {{post.title}} </p>
+    <p>Content: {{post.content}} </p>
+
+{% endblock %}
