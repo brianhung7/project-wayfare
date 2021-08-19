@@ -10,4 +10,16 @@
 {{user.profile.current_city}}
 {{user.date_joined}}
 
+
+<div>
+    {% for post in posts %}
+        <div>
+            {{post.city}} - 
+            {{post.title}} - 
+            {{post.content}}
+        </div>
+    {% empty %}
+        <p>No Posts to show!</p>
+    {% endfor %}
+</div>
 {% endblock %}

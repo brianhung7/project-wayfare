@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.base import TemplateView
 from django.views import View
+from .models import Post, City
 
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -36,3 +37,9 @@ class Signup(View):
 
 class Profile(TemplateView):
     template_name = 'profile.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['posts'] = Post.objects.filter(user=self.request.user)
+
+        return context
