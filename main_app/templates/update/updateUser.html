@@ -1,10 +1,30 @@
 {% extends 'base.html' %}
+
 {% block content %}
 
     <form method="POST" action="{% url 'update_profile' %}">
         {% csrf_token %}
-        {{form_one.as_p}}
-        {{form_two.as_p}}
+        <!-- {{form_one.as_p}} -->
+        <input id="form_one" type="text" value="{{user.username}}" name="username">
+        <input id="form_one" type="email" value="{{user.email}}" name="email">
+
+        <!-- {{form_two.as_p}} -->
+        <label for="current_city">Current city:</label>
+        <select name="current_city" required="" id="id_current_city form_two">
+            <option value="" selected="">---------</option>
+            <option value="1">Los Angeles</option>
+            <option value="2">Paris</option>
+            <option value="3">Hong Kong</option>
+            <option value="4">Brooklyn</option>
+            <option value="5">Dubai</option>
+            <option value="6">New York City</option>
+        </select>
+
+        <label for="id_avatar">Avatar:</label>
+        <input type="text" name="avatar" value="https://i.imgur.com/WxNkK7J.png" maxlength="500" required="" id="id_avatar form_two">
+
+        <input type="hidden" name="user_id" value="{{user.id}}"  id="form_two">
+
         <input type="submit">
     </form>
 
