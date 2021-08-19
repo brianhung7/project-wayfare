@@ -3,10 +3,11 @@
 
 {% block content %}
     <div class="d-flex align-items-center flex-column">
-        <h2>Title: {{post.title}} </h2>
-        <h2>City: {{post.city.name}}</h2>
-        <img src="{{post.city.img}}" alt="" srcset="" width = 1000px height=500px>
-        <h3>Author: {{post.user.username}}</h3>
-        <p class="mx-5" style="width:70%">Content: {{post.content}} Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem delectus corrupti necessitatibus mollitia, in illum fuga doloribus aspernatur id adipisci commodi, maiores nihil nisi animi alias veritatis debitis itaque quam.</p>
+
+        <img src="{{post.city.img}}" alt="" srcset="" width = 100% height=500px>
+        <h2>{{post.title}} </h2>
+        <h2>{{post.city.name}}</h2>
+        <h3>by {{post.user.username}}</h3>
+        <p class="mx-5" style="width:70%">Content: {{post.content}} Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem delectus corrupti necessitatibus mollitia, in illum fuga doloribus aspernatur id adipisci commodi, maiores nihil nisi animi alias veritatis debitis itaque quam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, reiciendis quo nemo maxime labore repudiandae doloremque quos error incidunt in, aut saepe quaerat eveniet temporibus fuga totam ipsum adipisci fugit. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi eligendi omnis repellendus necessitatibus nam deserunt, optio pariatur natus quasi excepturi odio atque, ipsa explicabo! Impedit quo dolorem ducimus sed. Aliquid?</p>
     </div>
 {% endblock %}
