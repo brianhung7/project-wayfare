@@ -9,11 +9,19 @@ body {
 
 .navbar {
     background-color: #b0f3ec;
+    font-family: 'Montserrat', sans-serif;
 }
 
-.navbar-brand {
-    text-decoration: none;
+#nav-brand {
     color: #2b3e44;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+#sign-in-modal {
+    
 }
 
 #signin {
@@ -57,10 +65,20 @@ body {
     max-width: 2000px;
 }
 
+#title {
+    font-family: 'Montserrat', sans-serif;
+}
+
+#content {
+    font-family: 'Esteban', serif;
+}
+
 
 footer{
     position:absolute;
     bottom:0;
+    color: #2b3e44;
+    font-family: 'Montserrat', sans-serif;
     width: 100%;
     
 }
