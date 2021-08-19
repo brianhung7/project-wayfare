@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from django.views.generic.base import TemplateView
 from django.views import View
+from django.views.generic import DetailView
 from .models import Post, City
+
 
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -43,3 +45,12 @@ class Profile(TemplateView):
         context['posts'] = Post.objects.filter(user=self.request.user)
 
         return context
+
+class PostDetail(DetailView):
+    model = Post
+    template_name = 'post_detail.html'
+
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context["post"] = Post.objects.get()
+    #     return context

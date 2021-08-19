@@ -15,7 +15,7 @@
     {% for post in posts %}
         <div>
             {{post.city}} - 
-            {{post.title}} - 
+            <a href="{% url 'post_detail' post.pk %}">{{post.title}}</a> - 
             {{post.content}}
         </div>
     {% empty %}

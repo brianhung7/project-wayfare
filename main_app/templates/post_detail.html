@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+ Post Detail
+    <p>User: {{post.user.username}}</p>
+    <p>Title: {{post.title}} </p>
+    <p>Content: {{post.content}}</p>
+
+{% endblock %}
