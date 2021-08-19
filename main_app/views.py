@@ -3,7 +3,7 @@ from django.views.generic.base import TemplateView
 from django.views.generic.edit import UpdateView
 from django.views import View
 from django.views.generic import DetailView
-from .models import Post, City
+from .models import Post, City, Profile
 
 
 from django.contrib.auth import login
@@ -32,6 +32,11 @@ class Signup(View):
         if form.is_valid():
             # create our user in the database
             user = form.save()
+            user.refresh_from_db()  # load the profile instance created by the signal
+            #user.profile = Profile(user, 'current_city_id' = 1,)
+            # user.profile.current_city = 1
+            # user.profile.avatar = 'https://i.imgur.com/QMxdIUh.jpeg' 
+            user.save()
             login(request, user)
             return redirect("home")
         else:
