@@ -21,7 +21,11 @@ body {
 }
 
 #sign-in-modal {
-    
+    font-family: 'Montserrat', sans-serif;
+}
+
+#sign-up-modal {
+    font-family: 'Montserrat', sans-serif;
 }
 
 #signin {
@@ -36,10 +40,14 @@ body {
 
 #profile {
     background-color: #5ccbaf;
+    color: #ebfcf8;
+    font-family: 'Montserrat', sans-serif;
 }
 
 #logout {
     background-color: #5ccbaf;
+    color: #ebfcf8;
+    font-family: 'Montserrat', sans-serif;
 }
 
 #close {
