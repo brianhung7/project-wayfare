@@ -3,7 +3,7 @@
 }
 
 body {
-    background: linear-gradient(to bottom, #ebfcf8 0%, #b0f3ec 100%);
+    background: linear-gradient(to bottom, #b0f3ec 0%, #ebfcf8 100%);
     height: 100vh;
 }
 
@@ -18,10 +18,32 @@ body {
 
 #signin {
     background-color: #5ccbaf;
+    color: #ebfcf8;
 }
 
 #signup {
     background-color: #5ccbaf;
+    color: #ebfcf8;
+}
+
+#profile {
+    background-color: #5ccbaf;
+}
+
+#logout {
+    background-color: #5ccbaf;
+}
+
+#close {
+    background-color: #9caab3;
+    border: none;
+    color: #ebfcf8;
+}
+
+#ok-btn {
+    background-color: #5ccbaf;
+    border: none;
+    color: #ebfcf8;
 }
 
 .carousel-container___home {
