@@ -1,9 +1,12 @@
+from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import UpdateView
 from django.views import View
 from django.views.generic import DetailView
 from .models import Post, City, Profile
+from django.db import models
+from django.contrib.auth.models import User
 
 
 from django.contrib.auth import login, authenticate
@@ -50,7 +53,7 @@ class Signup(View):
             return render(request, "registration/signup.html", context)
 
 
-class Profile(TemplateView):
+class ProfileView(TemplateView):
     template_name = 'profile.html'
 
     def get_context_data(self, **kwargs):
@@ -65,33 +68,21 @@ class UpdateProfile(UpdateView):
     def get(self, request):
         #request.user -> The current logged in user
         #request.user.email -> The current users email
-        form_one = UserUpdateForm()
-        form_two = ProfileUpdateForm()
+        # form_one = UserUpdateForm()
+        # form_two = ProfileUpdateForm()
         context = {
-            "form_one": form_one,
-            "form_two": form_two,
             "user": request.user
         }
         return render(request, "update/updateUser.html", context)
 
     #post route -> saves form information and retuns to the user profile page
     def post(self, request):
-        form_one = UserUpdateForm(request.POST)
-        form_two = ProfileUpdateForm(request.POST)
-        print("~~~~~ POST SUBMISSION ~~~~~")
-        print(request.POST)
-        print(form_one.is_valid())
-        print(form_two.is_valid())
-        print("~~~~~ POST SUBMISSION ~~~~~")
-        if form_one.is_valid() and form_two.is_valid():
-            form_one.save()
-            form_two.save()  #FIXME: NOT SAVING DATA BECAUSE DATA DIDNT VALIDATE
-            return redirect("profile")
-        else:
-            print("~~~ INVALID INPUTS ~~~~")
-            print(form_one.errors)
-            print(form_two.errors)
-            print("~~~ INVALID INPUTS ~~~~")
+        
+        Profile.objects.filter(user = request.user).update(current_city = request.POST["current_city"])
+        User.objects.filter(username = request.user).update(username = request.POST["username"])
+        
+        return redirect('profile_view')
+
 
 class PostDetail(DetailView):
     model = Post

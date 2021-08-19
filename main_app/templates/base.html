@@ -29,7 +29,7 @@
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             {% if user.is_authenticated %}
                 <span class="mt-2 me-2">Welcome: {{user.username}}</span>
-                <a class="btn" href="{% url 'profile'%}" id="profile"> Profile </a>
+                <a class="btn" href="{% url 'profile_view'%}" id="profile"> Profile </a>
                 <a class="btn" href="{% url 'logout'%}" id="logout"> Logout </a>
             {% else %}
                 <button class="btn me-md-2" type="button" data-bs-toggle="modal" data-bs-target="#sign-in-modal" id="signin">Sign In</button>
