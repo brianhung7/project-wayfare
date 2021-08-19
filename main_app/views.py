@@ -62,7 +62,13 @@ class UpdateProfile(View):
 
     #post route -> saves form information and retuns to the user profile page
     def post(self, request):
-        print(request)
+        form_one = UserUpdateForm(request.POST)
+        form_two = ProfileUpdateForm(request.POST)
+        print(request.POST)
+        if form_one.is_valid() and form_two.is_valid():
+            form_one.save()
+            form_two.save()
+            return redirect("profile")
 
 class PostDetail(DetailView):
     model = Post
