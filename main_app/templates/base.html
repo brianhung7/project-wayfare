@@ -34,7 +34,16 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>Modal body text goes here.</p>
+                    <p>    
+                        <form method="post" action="{% url 'login' %}">
+                            {% csrf_token %} 
+                            <input type="text" name="username" id="username" placeholder="Username">
+                            <input type="text" name="password" id="password" placeholder="Password">
+                            <input type="submit" class="btn" value="login" />
+                            <input type="hidden" name="next" value="{{ next }}" />
+                        </form>
+
+                    </p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -52,7 +61,14 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>Modal body text goes here.</p>
+                    <p>    
+                    <form method="POST" action="{% url 'signup' %}">
+                        <input type="hidden" name="form_name" value="signup_form">  
+                        {% csrf_token %}
+                        {{ signup_form}}    
+                        <input type="submit">    
+                    </form>
+                    </p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

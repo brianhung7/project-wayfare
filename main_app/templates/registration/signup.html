@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}      
+                    
+                    <form method="POST" action="{% url 'signup' %}">
+                        <input type="hidden" name="form_name" value="login_form">  
+                        {% csrf_token %}
+                        {{ form}}    
+                        <input type="submit">    
+                    </form>
+
+{% endblock %}
