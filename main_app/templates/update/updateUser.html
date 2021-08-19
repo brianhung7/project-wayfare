@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    <form method="POST" action="{% url 'update_profile' %}">
+    {% comment %} <form method="POST" action="{% url 'update_profile' %}">
         {% csrf_token %}
         <!-- {{form_one.as_p}} -->
         <input id="form_one" type="text" value="{{user.username}}" name="username">
@@ -26,6 +26,10 @@
         <input type="hidden" name="user_id" value="{{user.id}}"  id="form_two">
 
         <input type="submit">
+    </form>  {% endcomment %}
+    <form action="" method="post">
+        {% csrf_token %} 
+        {{form.as_p}}
+        <input type="submit" value="Submit" />
     </form>
-
 {% endblock %}

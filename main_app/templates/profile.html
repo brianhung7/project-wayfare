@@ -10,7 +10,7 @@
         <img class="m-3" src="{{user.profile.avatar}}" alt="" srcset="" width=250px>
         <h3>Current City: {{user.profile.current_city}}</h3>
         <p>Join Date: {{user.date_joined}}</p>
-        <a class="btn" href="{% url 'update_profile'%}" id="update">Update Profile</a>
+        <a class="btn" href="{% url 'update_profile' user.pk%}" id="update">Update Profile</a>
 
     </div>
     
