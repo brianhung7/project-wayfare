@@ -1,7 +1,6 @@
 from django.urls import path
 from . import views
-from .views import Home, Signup, ProfileView, PostDetail, UpdateProfile, CitiesView, PostCreate
-
+from .views import Home, Signup, ProfileView, PostDetail, UpdateProfile, CitiesView, PostCreate, PostUpdate, MainUserCity, PostDelete
 
 urlpatterns = [
 	path('', Home.as_view(), name="home"),
@@ -9,8 +8,9 @@ urlpatterns = [
     path('accounts/profile/', ProfileView.as_view(), name="profile_view"),
     path('posts/<int:pk>/', PostDetail.as_view(), name="post_detail"),
     path('posts/new/', PostCreate.as_view(), name="post_create"),
+    path('posts/<int:pk>/edit/', PostUpdate.as_view(), name="post_update"),
+    path('posts/<int:pk>/delete/', PostDelete.as_view(), name="post_delete"),
     path('accounts/profile/update/', UpdateProfile.as_view(), name="update_profile"), 
     path('cities/<int:pk>/', CitiesView.as_view(), name="cities_view"),
-    
-
+    path('cities/', MainUserCity.as_view(), name="user_city")
 ]
