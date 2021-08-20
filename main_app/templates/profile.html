@@ -27,7 +27,7 @@
                             {% csrf_token %}
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
-                                <input type="text" class="form-control" placeholder="Username" name= "username" id="username" aria-label="Username" aria-describedby="basic-addon1" value="{{user.username}}">
+                                <input type="text" class="form-control" placeholder="Username" name= "username" id="username" aria-label="Username" aria-describedby="basic-addon1" value="{{user.username}}" style="color:black">
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1"><i class="fas fa-city"></i></span>
@@ -69,10 +69,10 @@
                 <!--{{post.content}}-->
             </div> {% endcomment %}
             <div class="card ms-1 me-2 mt-3" style="width: 18rem;">
-                <img src="{{post.city.img}}" class="card-img-top mt-2" alt="{{post.city}}">
+                <img src="{{post.city.img}}" class="card-img-top mt-2" alt="{{post.city}}" height=170px>
                 <div class="card-body">
-                    <h5 class="card-title">{{post.city.name}}</h5>
-                    <p class="card-text" id="content">{{post.content}}</p>
+                    <h5 class="card-title" style="color:black">{{post.city.name}}</h5>
+                    <p class="card-text" id="content" style="color:black">{{post.content}}</p>
                     <a href="{% url 'post_detail' post.pk %}" class="btn" id="post-btn">{{post.title}}</a>
                 </div>
             </div>
