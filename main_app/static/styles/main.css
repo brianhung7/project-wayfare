@@ -109,6 +109,15 @@ body {
     border-radius: 50px;
 }
 
+.card-body > .card-title {
+    color: #2b3e44
+}
+
+.card-body > #content {
+    color: #2b3e44
+}
+
+
 
 footer{
     color: #ebfcf8;
