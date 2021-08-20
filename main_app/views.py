@@ -1,7 +1,7 @@
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic.base import TemplateView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views import View
 from django.views.generic import DetailView
 from .models import Post, City, Profile
@@ -102,6 +102,13 @@ class PostDetail(DetailView):
     #     context["post"] = Post.objects.get()
     #     return context
 
+class MainUserCity(View):
+
+    def get(self, request):
+        # current_user = Profile.objects.filter(user = request.user)[0] #.get('current_city_id')
+        # print("~~~~~~~~~~~~~~~~~~~~~~~~~~")
+        # print(current_user)
+        return redirect('/cities/1/')
 
 class CitiesView(DetailView):
     model = City
@@ -134,3 +141,8 @@ class PostUpdate(UpdateView):
 
     def get_success_url(self):
         return reverse("post_detail", kwargs={'pk': self.object.pk})
+
+class PostDelete(DeleteView):
+    model = Post
+    template_name = "post_delete_confirmation.html"
+    success_url = "/cities/"
