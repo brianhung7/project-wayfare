@@ -100,3 +100,16 @@ class PostDetail(DetailView):
     #     context = super().get_context_data(**kwargs)
     #     context["post"] = Post.objects.get()
     #     return context
+
+
+class CitiesView(DetailView):
+    model = City
+    template_name = "cities_detail.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        pk_key = self.kwargs['pk']
+        #print(self.request.GET.get('pk'))
+        context['city_list'] = City.objects.all()
+        context['city_posts'] = Post.objects.filter(city=pk_key)
+        
+        return context

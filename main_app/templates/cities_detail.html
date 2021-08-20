@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% comment %} <h1 style="color:white">{{city_posts}}</h1> {% endcomment %}
+ <h1 style="color:white">{{city.name}}</h1>
+
+    {% for city_item in city_list %}
+        <h1 style="color:white">{{city_item.name}}</h1>
+    {% endfor %}
+
+    {% for city_post in city_posts %}
+        <h1 style="color:white">{{city_post.content}}</h1>
+    {% endfor %} 
+
+{% endblock %}
