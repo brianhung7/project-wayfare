@@ -27,29 +27,30 @@ class Home(TemplateView):
 class Signup(View):
 
     def get(self,request):
-        form = UserCreationForm()
-        context = {"form": form}
+        signup_form = UserCreationForm()
+        profile_form = ProfileUpdateForm()
+        context = {"signup_form": signup_form, "profile_form":profile_form}
         return render(request, "registration/signup.html", context)
 
 
     def post(self,request):
-        form = UserCreationForm(request.POST)
+        signup_form = UserCreationForm(request.POST)
         profile_form = ProfileCreateForm(request.POST)
-        if form.is_valid():
+        if signup_form.is_valid():
             # create our user in the database
-            user = form.save()
+            user = signup_form.save()
             #user.refresh_from_db()  # load the profile instance created by the signal
 
-            print(user)
+            #print(user)
             profile = profile_form.save(commit=False)
             profile.user = user
             profile.save()
-            print(profile)
+            #print(profile)
             user.save()
             login(request, user)
-            return redirect("home")
+            return redirect("profile_view")
         else:
-            context = {"form": form, "profile_form": profile_form}
+            context = {"signup_form": signup_form, "profile_form": profile_form}
             return render(request, "registration/signup.html", context)
 
 
@@ -59,6 +60,7 @@ class ProfileView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['posts'] = Post.objects.filter(user=self.request.user)
+        context['cities'] = City.objects.all
 
         return context
 
@@ -71,15 +73,21 @@ class UpdateProfile(UpdateView):
         # form_one = UserUpdateForm()
         # form_two = ProfileUpdateForm()
         context = {
-            "user": request.user
+            "user": request.user,
+            'cities': City.objects.all
         }
         return render(request, "update/updateUser.html", context)
 
     #post route -> saves form information and retuns to the user profile page
     def post(self, request):
-        
         Profile.objects.filter(user = request.user).update(current_city = request.POST["current_city"])
-        User.objects.filter(username = request.user).update(username = request.POST["username"])
+        if str(request.user)==request.POST["username"] or not User.objects.filter(username=request.POST["username"]):
+            User.objects.filter(username = request.user).update(username = request.POST["username"])
+            return redirect('profile_view')
+        else:
+            context = {"error": "Username already taken", 'cities':City.objects.all}
+            return render(request,"update/updateUser.html", context)
+
         
         return redirect('profile_view')
 

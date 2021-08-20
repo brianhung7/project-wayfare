@@ -1,26 +1,43 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    {% if error %} 
+    <h2 class='alert alert-danger' style="text-align:center">{{error}}</h2>
+    {% endif %}
 
-    <form method="POST" action="{% url 'update_profile' %}">
-        {% csrf_token %}
-        <label for="name">Username:</label>
-        <input id="name" type="text" value="{{user.username}}" name="username">
+        {% comment %}
+            <div class="d-flex align-items-center flex-column" style="width:500px; background-color:white;margin:auto"  > </div>
+        {% endcomment %}
+        <div class="mt-5" style="width:400px; background-color:white;margin:auto;border:5px solid black;border-radius:10px"  >
+        <form method="POST" action="{% url 'update_profile' %}">
+        <div class="d-flex align-items-center flex-column my-4">
+            {% csrf_token %}
+            <div class="my-2">
+                <label for="name">Username:</label>
+                <input id="name" type="text" value="{{user.username}}" name="username">
+            </div>
 
-        <label for="current_city">Current city:</label>
-        <select name="current_city" required="" id="id_current_city form_two">
-            <option value="" selected="">---------</option>
-            <option value="2">Los Angeles</option>
-            <option value="3">Paris</option>
-            <option value="4">Hong Kong</option>
-            <option value="5">Brooklyn</option>
-            <option value="6">Dubai</option>
-            <option value="7">New York City</option>
-        </select>
+            <div class="my-2">
+                <label for="current_city">Current city:</label>
+                <select name="current_city" required="" id="id_current_city form_two"> 
+                    {% for city in cities %}        
+                    {% if user.profile.current_city.id == city.id %}
+                        <option value="{{user.profile.current_city.id}}" selected="">{{user.profile.current_city}}</option>
+                    {% else %}
+                        <option value="{{city.id}}">{{city.name}}</option>
+                    {% endif %}
+                    {% endfor %}
+            
 
-        <input type="hidden" name="user_id" value="{{user.id}}"  id="form_two">
-
-        <input type="submit">
-    </form>
+            <input  type="hidden" name="user_id" value="{{user.id}}"  id="form_two">
+            </div>
+            
+            <div class="my-2">
+                <input type="submit" value="Update Profile">
+            </div>
+        </div>
+        </form>
+        </div>
+    
 
 {% endblock %}

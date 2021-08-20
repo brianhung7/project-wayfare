@@ -98,6 +98,11 @@
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-city"></i></span>
                             {{ profile_form.current_city|add_class:"form-control"|attr:"placeholder:Current City" }}
+                            {% comment %} This makes it so default value of city dropdown has a message {% endcomment %}
+                            <script>
+                                options = document.getElementsByTagName('option');
+                                options[0].innerHTML = "Select Current City";
+                            </script>
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-user-tie"></i></span>
@@ -118,10 +123,11 @@
 </body>
 
     <footer>
-        <div class="text-center p-4 fixed-bottom">
+        <div class="text-center p-4">
         © 2021 Copyright:
         <a class="text-reset fw-bold" href="{% url 'home' %}">Project Wayfarer</a>
         </div>
     </footer>
 
 </html>
+
