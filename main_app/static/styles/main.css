@@ -9,6 +9,11 @@ body {
     height: 100vh;
 }
 
+.body-container___base {
+    min-height: 100%; 
+    margin-bottom: -50px;
+}
+
 .navbar {
     background-color: #2b3e44;
     font-family: 'Montserrat', sans-serif;
