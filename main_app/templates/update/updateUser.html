@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+    {{error}}
     <form method="POST" action="{% url 'update_profile' %}">
         {% csrf_token %}
         <label for="name">Username:</label>
