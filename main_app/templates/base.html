@@ -24,7 +24,7 @@
 <body>
 
     <nav class="navbar">
-    <div class="container-fluid">
+    <div class="container-fluid nav-bar___base">
         <a class="navbar-brand" href="{% url 'home' %}" id="nav-brand"><i class="fas fa-walking"></i>    Wayfarer</a>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             {% if user.is_authenticated %}
@@ -122,12 +122,12 @@
 
 </body>
 
-    <footer>
-        <div class="text-center p-4 ">
+<footer>
+    <div class="text-center p-4 ">
         © 2021 Copyright:
-        <a class="text-reset fw-bold" href="{% url 'home' %}">Project Wayfarer</a>
-        </div>
-    </footer>
+    <a class="text-reset fw-bold" href="{% url 'home' %}">Project Wayfarer</a>
+    </div>
+</footer>
 
 </html>
 
