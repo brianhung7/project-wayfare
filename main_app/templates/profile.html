@@ -10,8 +10,47 @@
         <img class="m-3" src="{{user.profile.avatar}}" alt="" srcset="" width=250px>
         <p>Current City: {{user.profile.current_city}}</p>
         <p>Join Date: {{user.date_joined}}</p>
-        <a class="btn" href="{% url 'update_profile'%}" id="update">Update Profile</a>
+        <a class="btn" data-bs-toggle="modal" data-bs-target="#update-modal" id="update">Update Profile</a>
 
+    </div>
+
+    <div class="modal" tabindex="-1" id="update-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Update Profile</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>    
+                        <form method="post" action="{% url 'update_profile' %}">
+                            {% csrf_token %}
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
+                                <input type="text" class="form-control" placeholder="Username" name= "username" id="username" aria-label="Username" aria-describedby="basic-addon1">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-city"></i></span>
+                                <select class="form-control" name="current_city" required="" id="id_current_city form_two">
+                                    <option value="" selected="">---------</option>
+                                    <option value="8">Los Angeles</option>
+                                    <option value="3">Paris</option>
+                                    <option value="4">Hong Kong</option>
+                                    <option value="11">Brooklyn</option>
+                                    <option value="6">Dubai</option>
+                                    <option value="7">New York City</option>
+                                </select>
+                            </div>
+                            <input type="hidden" name="next" value="{{ next }}" />
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">Close</button>
+                    <input type="submit" class="btn" value="Sign In" id="ok-btn"/>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
     
     <div class="col-md-8" style="text-align:center">
