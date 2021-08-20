@@ -30,3 +30,7 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        #If it's not the right direction, remove minus sign
+        ordering = ['-created_at'] 
