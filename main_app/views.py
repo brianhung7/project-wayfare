@@ -126,3 +126,11 @@ class PostCreate(CreateView):
 
     def get_success_url(self):
         return reverse("post_detail", kwargs={'pk': self.object.pk})
+
+class PostUpdate(UpdateView):
+    model = Post
+    fields = ['title', 'content', 'city']
+    template_name = 'post_update.html'
+
+    def get_success_url(self):
+        return reverse("post_detail", kwargs={'pk': self.object.pk})
