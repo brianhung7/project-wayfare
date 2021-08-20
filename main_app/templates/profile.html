@@ -10,6 +10,7 @@
         <img class="m-3" src="{{user.profile.avatar}}" alt="" srcset="" width=250px>
         <p>Current City: {{user.profile.current_city}}</p>
         <p>Join Date: {{user.date_joined}}</p>
+        <a href="{% url 'update_profile'%}">Update Profile</a>
         <a class="btn" data-bs-toggle="modal" data-bs-target="#update-modal" id="update">Update Profile</a>
 
     </div>
@@ -27,18 +28,16 @@
                             {% csrf_token %}
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
-                                <input type="text" class="form-control" placeholder="Username" name= "username" id="username" aria-label="Username" aria-describedby="basic-addon1">
+                                <input type="text" class="form-control" placeholder="Username" name= "username" id="username" aria-label="Username" aria-describedby="basic-addon1" value="{{user.username}}">
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1"><i class="fas fa-city"></i></span>
                                 <select class="form-control" name="current_city" required="" id="id_current_city form_two">
-                                    <option value="" selected="">---------</option>
-                                    <option value="8">Los Angeles</option>
-                                    <option value="3">Paris</option>
-                                    <option value="4">Hong Kong</option>
-                                    <option value="11">Brooklyn</option>
-                                    <option value="6">Dubai</option>
-                                    <option value="7">New York City</option>
+                                    <option value="{{user.profile.current_city.id}}" selected="">{{user.profile.current_city}}</option>
+                                    {% for city in cities %}
+                                    <option value="{{city.id}}">{{city.name}}</option>
+
+                                    {% endfor %}
                                 </select>
                             </div>
                             <input type="hidden" name="next" value="{{ next }}" />
@@ -46,7 +45,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">Close</button>
-                    <input type="submit" class="btn" value="Sign In" id="ok-btn"/>
+                    <input type="submit" class="btn" value="Update Profile" id="ok-btn"/>
                     </form>
                 </div>
             </div>
@@ -64,7 +63,7 @@
                 <div><img src="{{post.city.img}}" alt="" srcset="" width=250px> </div>
                 <!--{{post.content}}-->
             </div> {% endcomment %}
-            <div class="card ms-1 me-1" style="width: 18rem;">
+            <div class="card ms-1 me-1 mt-3" style="width: 18rem;">
                 <img src="{{post.city.img}}" class="card-img-top mt-2" alt="{{post.city}}">
                 <div class="card-body">
                     <h5 class="card-title">{{post.title}}</h5>
@@ -79,4 +78,6 @@
         </div>
     </div>
 </div>
+
+
 {% endblock %}

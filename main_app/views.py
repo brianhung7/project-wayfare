@@ -40,11 +40,11 @@ class Signup(View):
             user = form.save()
             #user.refresh_from_db()  # load the profile instance created by the signal
 
-            print(user)
+            #print(user)
             profile = profile_form.save(commit=False)
             profile.user = user
             profile.save()
-            print(profile)
+            #print(profile)
             user.save()
             login(request, user)
             return redirect("home")
@@ -59,6 +59,7 @@ class ProfileView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['posts'] = Post.objects.filter(user=self.request.user)
+        context['cities'] = City.objects.all
 
         return context
 
@@ -71,7 +72,8 @@ class UpdateProfile(UpdateView):
         # form_one = UserUpdateForm()
         # form_two = ProfileUpdateForm()
         context = {
-            "user": request.user
+            "user": request.user,
+            'cities': City.objects.all
         }
         return render(request, "update/updateUser.html", context)
 

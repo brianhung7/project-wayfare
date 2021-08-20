@@ -9,14 +9,10 @@
 
         <label for="current_city">Current city:</label>
         <select name="current_city" required="" id="id_current_city form_two">
-            <option value="" selected="">---------</option>
-            <option value="2">Los Angeles</option>
-            <option value="3">Paris</option>
-            <option value="4">Hong Kong</option>
-            <option value="5">Brooklyn</option>
-            <option value="6">Dubai</option>
-            <option value="7">New York City</option>
-        </select>
+            <option value="{{user.profile.current_city.id}}" selected="">{{user.profile.current_city}}</option>
+             {% for city in cities %}
+            <option value="{{city.id}}">{{city.name}}</option>
+            {% endfor %}
 
         <input type="hidden" name="user_id" value="{{user.id}}"  id="form_two">
 
