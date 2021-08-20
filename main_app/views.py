@@ -27,8 +27,9 @@ class Home(TemplateView):
 class Signup(View):
 
     def get(self,request):
-        form = UserCreationForm()
-        context = {"form": form}
+        signup_form = UserCreationForm()
+        profile_form = ProfileUpdateForm()
+        context = {"signup_form": signup_form, "profile_form":profile_form}
         return render(request, "registration/signup.html", context)
 
 
@@ -47,7 +48,7 @@ class Signup(View):
             #print(profile)
             user.save()
             login(request, user)
-            return redirect("home")
+            return redirect("profile_view")
         else:
             context = {"form": form, "profile_form": profile_form}
             return render(request, "registration/signup.html", context)

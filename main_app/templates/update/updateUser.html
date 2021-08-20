@@ -1,22 +1,41 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    {{error}}
-    <form method="POST" action="{% url 'update_profile' %}">
-        {% csrf_token %}
-        <label for="name">Username:</label>
-        <input id="name" type="text" value="{{user.username}}" name="username">
+    {% if error %} 
+    <h2 class='alert alert-danger'>{{error}}</h2>
+    {% endif %}
 
-        <label for="current_city">Current city:</label>
-        <select name="current_city" required="" id="id_current_city form_two">
-            <option value="{{user.profile.current_city.id}}" selected="">{{user.profile.current_city}}</option>
-             {% for city in cities %}
-            <option value="{{city.id}}">{{city.name}}</option>
-            {% endfor %}
+        {% comment %}
+            <div class="d-flex align-items-center flex-column" style="width:500px; background-color:white;margin:auto"  > </div>
+        {% endcomment %}
+        <div class="mt-5" style="width:400px; background-color:white;margin:auto;border:5px solid black;border-radius:10px"  >
+        <form method="POST" action="{% url 'update_profile' %}">
+        <div class="d-flex align-items-center flex-column my-4">
+            {% csrf_token %}
+            <div class="my-2">
+                <label for="name">Username:</label>
+                <input id="name" type="text" value="{{user.username}}" name="username">
+            </div>
 
-        <input type="hidden" name="user_id" value="{{user.id}}"  id="form_two">
+            <div class="my-2">
+                <label for="current_city">Current city:</label>
+                <select name="current_city" required="" id="id_current_city form_two">
+                <option value="{{user.profile.current_city.id}}" selected="">{{user.profile.current_city}}</option>
+                {% for city in cities %}
+                <option value="{{city.id}}">{{city.name}}</option>
+                {% endfor %}
+            
 
-        <input type="submit">
-    </form>
+            
+            <input  type="hidden" name="user_id" value="{{user.id}}"  id="form_two">
+            </div>
+            
+            <div class="my-2">
+                <input type="submit" value="Update Profile">
+            </div>
+        </div>
+        </form>
+        </div>
+    
 
 {% endblock %}
