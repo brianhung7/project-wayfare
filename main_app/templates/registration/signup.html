@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}      
-                    
-                    <form method="POST" action="{% url 'signup' %}">
+    <div class="mt-5" style="width:400px; background-color:white;margin:auto;border:5px solid black;border-radius:10px"  >
+         <form method="POST" action="{% url 'signup' %}">
+            <div class="d-flex align-items-center flex-column my-2">
                         <input type="hidden" name="form_name" value="login_form">  
                         {% csrf_token %}
-                        {{ form}}    
+                        {{signup_form}}    
                         {{profile_form}}
-                        <input type="submit">    
-                    </form>
-
+                        <input class="px-3 py-1" type="submit" value="Sign Up">    
+            </div>
+          </form>
+    </div>
 {% endblock %}

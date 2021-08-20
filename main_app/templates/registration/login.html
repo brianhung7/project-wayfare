@@ -2,18 +2,23 @@
 
 {% block content %}
 
-<h1 class="title">Log In</h1>
+<h1 class="title" style="text-align:center">Log In</h1>
 
 {% if user.is_authenticated %}
     <h3 class="mb-5">{{user.username}} you are already logged in. Please <a href="{% url 'logout' %}">Logout.</a></h3>
 
 {% else %}
+  <div class="mt-5" style="width:400px; background-color:white;margin:auto;border:5px solid black;border-radius:10px"  >
     <form method="post" action="{% url 'login' %}">
-      {% csrf_token %} 
-      {{ form.as_p }}
-      <input type="submit" class="button" value="login" />
-      <input type="hidden" name="next" value="{{ next }}" />
+      <div class="d-flex align-items-center flex-column my-4">
+        {% csrf_token %} 
+        {{ form.as_p }}
+        {{profile_form.as_p}}
+        <input class="px-3 py-1" type="submit" class="button" value="Log In" />
+        <input type="hidden" name="next" value="{{ next }}" />
+      </div>
     </form>
+  </div>
 {% endif %}
 
 
