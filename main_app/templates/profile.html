@@ -32,6 +32,7 @@
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1"><i class="fas fa-city"></i></span>
                                 <select class="form-control" name="current_city" required="" id="id_current_city form_two">
+
                                     
                                     {% for city in cities %}
                                     
@@ -41,6 +42,7 @@
                                         <option value="{{city.id}}">{{city.name}}</option>
                                     {% endif %}
                                     {% endfor %}
+
                                 </select>
                             </div>
                             <input type="hidden" name="next" value="{{ next }}" />

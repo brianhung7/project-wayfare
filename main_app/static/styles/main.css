@@ -4,21 +4,30 @@
 }
 
 body {
-    background: linear-gradient(to bottom, #b0f3ec 0%, #ebfcf8 100%);
-    height:100vh;
+    background: #2b3e44;
+    color: #2b3e44;
+    height: 100vh;
 }
 
 .navbar {
-    background-color: #b0f3ec;
+    background-color: #2b3e44;
     font-family: 'Montserrat', sans-serif;
 }
 
 #nav-brand {
-    color: #2b3e44;
+    color: #ebfcf8;
     font-family: 'Montserrat', sans-serif;
     font-size: 1.5rem;
     font-weight: 900;
     text-decoration: none;
+}
+
+.modal-dialog {
+    color: #2b3e44;
+}
+
+#username {
+    color: #ebfcf8;
 }
 
 #sign-in-modal {
@@ -75,10 +84,12 @@ body {
 }
 
 #title {
+    color: #ebfcf8;
     font-family: 'Montserrat', sans-serif;
 }
 
 #content {
+    color: #ebfcf8;
     font-family: 'Esteban', serif;
 }
 
@@ -100,7 +111,7 @@ body {
 
 
 footer{
-    color: #2b3e44;
+    color: #ebfcf8;
     font-family: 'Montserrat', sans-serif;
     width: 100%;
 }

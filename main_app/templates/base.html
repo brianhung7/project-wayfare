@@ -28,7 +28,7 @@
         <a class="navbar-brand" href="{% url 'home' %}" id="nav-brand"><i class="fas fa-walking"></i>    Wayfarer</a>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             {% if user.is_authenticated %}
-                <span class="mt-2 me-2">Welcome: {{user.username}}</span>
+                <span class="mt-2 me-2" id="username">Welcome: {{user.username}}</span>
                 <a class="btn" href="{% url 'profile_view'%}" id="profile"> Profile </a>
                 <a class="btn" href="{% url 'logout'%}" id="logout"> Logout </a>
             {% else %}
