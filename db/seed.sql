@@ -1,17 +1,17 @@
-INSERT INTO main_app_city(name,img) 
-    VALUES('San Francisco','https://i.imgur.com/QEc3wRH.jpeg');
-INSERT INTO main_app_city(name,img) 
-    VALUES('Gibraltar','https://i.imgur.com/4FVxgyO.png');
-INSERT INTO main_app_city(name,img) 
-    VALUES('London','https://i.imgur.com/RWVJx9e.jpeg');
-INSERT INTO main_app_city(name,img) 
-    VALUES('Paris','https://i.imgur.com/tv7ZdLZ.jpeg');
-INSERT INTO main_app_city(name,img) 
-    VALUES('Hong Kong','https://i.imgur.com/mGmOD5S.jpeg');
-INSERT INTO main_app_city(name,img) 
-    VALUES('Dubai','https://i.imgur.com/Pm4IrNz.jpeg');
-INSERT INTO main_app_city(name,img) 
-    VALUES('New York City','https://i.imgur.com/QMxdIUh.jpeg');
+INSERT INTO main_app_city(name,img, country) 
+    VALUES('San Francisco','https://i.imgur.com/QEc3wRH.jpeg','United States');
+INSERT INTO main_app_city(name,img, country) 
+    VALUES('Gibraltar','https://i.imgur.com/4FVxgyO.png', 'United Kingdom');
+INSERT INTO main_app_city(name,img, country) 
+    VALUES('London','https://i.imgur.com/RWVJx9e.jpeg', 'England');
+INSERT INTO main_app_city(name,img, country) 
+    VALUES('Paris','https://i.imgur.com/tv7ZdLZ.jpeg', 'France');
+INSERT INTO main_app_city(name,img, country) 
+    VALUES('Hong Kong','https://i.imgur.com/mGmOD5S.jpeg', 'China');
+INSERT INTO main_app_city(name,img, country) 
+    VALUES('Dubai','https://i.imgur.com/Pm4IrNz.jpeg','United Arab Emirates');
+INSERT INTO main_app_city(name,img, country) 
+    VALUES('New York City','https://i.imgur.com/QMxdIUh.jpeg', 'United States');
 
 
 INSERT INTO main_app_post(title, content, created_at, city_id, user_id) VALUES 
