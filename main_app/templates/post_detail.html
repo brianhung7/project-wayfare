@@ -15,10 +15,44 @@
             </div>
             <div>
                 <a href="{% url 'post_update' post.pk %}">Edit Post</a>
-                <a href="{% url 'post_delete' post.pk %}">Delete Post</a>
+                <button class="btn me-md-2" type="button" data-bs-toggle="modal" data-bs-target="#delete-post-modal" id="delete_post">Delete Post</button>
+
             </div>
         </div>
         <p class="mx-5 mt-3" style="width:70%;line-height:30px" id="content">{{post.content}} Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem delectus corrupti necessitatibus mollitia, in illum fuga doloribus aspernatur id adipisci commodi, maiores nihil nisi animi alias veritatis debitis itaque quam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, reiciendis quo nemo maxime labore repudiandae doloremque quos error incidunt in, aut saepe quaerat eveniet temporibus fuga totam ipsum adipisci fugit. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias tempora quas voluptatum vitae nobis ullam esse aspernatur commodi amet consequatur consectetur earum maxime id, deleniti sint veniam, reprehenderit ea. Accusamus. </p>
 
+    </div>
+
+     <div class="modal" tabindex="-1" id="delete-post-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Sign In</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>    
+                        <form method="post" action="{% url 'login' %}">
+                            {% csrf_token %}
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
+                                <input style="color:black" type="text" class="form-control" placeholder="Username" name= "username" id="username" aria-label="Username" aria-describedby="basic-addon1">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
+                                <input type="password" class="form-control" placeholder="Password" name="password" aria-label="Password" aria-describedby="basic-addon1" id="password">
+                            </div>
+                            <input type="hidden" name="next" value="{{ next }}" />
+                        
+
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">Close</button>
+                    <input type="submit" class="btn" value="Sign In" id="ok-btn"/>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
