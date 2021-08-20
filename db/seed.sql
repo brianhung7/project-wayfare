@@ -13,8 +13,8 @@ INSERT INTO main_app_city(name,img)
 
 
 INSERT INTO main_app_post(title, content, created_at, city_id, user_id) VALUES 
-    ('I love LA!','I had the most amazing time here!', '2021-05-07 18:57:42.517205-07' ,1, 1);
+    ('I love LA!','I had the most amazing time here!', '2020-05-07 18:57:42.517205-07' ,1, 1);
 INSERT INTO main_app_post(title, content, created_at, city_id, user_id) VALUES 
-    ('The City of Love','I had the most amazing time here with my family!', '2021-05-07 18:57:42.517205-07' ,2, 1);
+    ('The City of Love','I had the most amazing time here with my family!', '2021-05-09 18:57:42.517205-07' ,2, 1);
 INSERT INTO main_app_post(title, content, created_at, city_id, user_id) VALUES 
-    ('The Best Trip!','I cant wait to go here again! Oh wow!', '2021-05-07 18:57:42.517205-07' ,3, 1);
+    ('The Best Trip!','I cant wait to go here again! Oh wow!', '2021-06-07 18:57:42.517205-07' ,3, 1);

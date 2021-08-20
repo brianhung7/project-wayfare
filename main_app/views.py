@@ -1,7 +1,7 @@
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic.base import TemplateView
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.views import View
 from django.views.generic import DetailView
 from .models import Post, City, Profile
@@ -12,6 +12,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from .forms import UserUpdateForm, ProfileUpdateForm, ProfileCreateForm
+from django.urls import reverse
 # Create your views here.
 class Home(TemplateView):
     template_name= 'home.html'
@@ -100,3 +101,28 @@ class PostDetail(DetailView):
     #     context = super().get_context_data(**kwargs)
     #     context["post"] = Post.objects.get()
     #     return context
+
+
+class CitiesView(DetailView):
+    model = City
+    template_name = "cities_detail.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        pk_key = self.kwargs['pk']
+        #print(self.request.GET.get('pk'))
+        context['city_list'] = City.objects.all()
+        context['city_posts'] = Post.objects.filter(city=pk_key)
+        
+        return context
+
+class PostCreate(CreateView):
+    model = Post
+    fields = ['title', 'content', 'city']
+    template_name = 'post_create.html'
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(PostCreate, self).form_valid(form)
+
+    def get_success_url(self):
+        return reverse("post_detail", kwargs={'pk': self.object.pk})
