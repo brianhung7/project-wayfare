@@ -14,6 +14,10 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+.nav-bar___base {
+    max-width: 1500px;
+}
+
 #nav-brand {
     color: #ebfcf8;
     font-family: 'Montserrat', sans-serif;
