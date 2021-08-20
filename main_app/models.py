@@ -15,7 +15,7 @@ class City(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     current_city = ForeignKey(City, on_delete=models.CASCADE, related_name='profile')
-    avatar = models.CharField(max_length=500, default='https://i.imgur.com/WxNkK7J.png')
+    avatar = models.CharField(max_length=500, default='https://i.imgur.com/eYlOXmc.png')
 
     def __str__(self):
         return self.user.username
