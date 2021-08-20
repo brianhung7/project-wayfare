@@ -77,14 +77,11 @@ class UpdateProfile(UpdateView):
 
     #post route -> saves form information and retuns to the user profile page
     def post(self, request):
-        print(request.POST["username"])
-        print(request.user)
         Profile.objects.filter(user = request.user).update(current_city = request.POST["current_city"])
-        if request.user == request.POST["username"] or not User.objects.filter(username=request.POST["username"]):
+        if str(request.user)==request.POST["username"] or not User.objects.filter(username=request.POST["username"]):
             User.objects.filter(username = request.user).update(username = request.POST["username"])
-            print("User updated")
+            return redirect('profile_view')
         else:
-            print("Username already exists")
             context = {"error": "Username already taken"}
             return render(request,"update/updateUser.html", context)
 
