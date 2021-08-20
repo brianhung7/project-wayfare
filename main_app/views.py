@@ -34,11 +34,11 @@ class Signup(View):
 
 
     def post(self,request):
-        form = UserCreationForm(request.POST)
+        signup_form = UserCreationForm(request.POST)
         profile_form = ProfileCreateForm(request.POST)
-        if form.is_valid():
+        if signup_form.is_valid():
             # create our user in the database
-            user = form.save()
+            user = signup_form.save()
             #user.refresh_from_db()  # load the profile instance created by the signal
 
             #print(user)
@@ -50,7 +50,7 @@ class Signup(View):
             login(request, user)
             return redirect("profile_view")
         else:
-            context = {"form": form, "profile_form": profile_form}
+            context = {"signup_form": signup_form, "profile_form": profile_form}
             return render(request, "registration/signup.html", context)
 
 
@@ -85,7 +85,7 @@ class UpdateProfile(UpdateView):
             User.objects.filter(username = request.user).update(username = request.POST["username"])
             return redirect('profile_view')
         else:
-            context = {"error": "Username already taken"}
+            context = {"error": "Username already taken", 'cities':City.objects.all}
             return render(request,"update/updateUser.html", context)
 
         

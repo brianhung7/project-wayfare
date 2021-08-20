@@ -2,7 +2,7 @@
 
 {% block content %}
     {% if error %} 
-    <h2 class='alert alert-danger'>{{error}}</h2>
+    <h2 class='alert alert-danger' style="text-align:center">{{error}}</h2>
     {% endif %}
 
         {% comment %}
@@ -19,14 +19,16 @@
 
             <div class="my-2">
                 <label for="current_city">Current city:</label>
-                <select name="current_city" required="" id="id_current_city form_two">
-                <option value="{{user.profile.current_city.id}}" selected="">{{user.profile.current_city}}</option>
-                {% for city in cities %}
-                <option value="{{city.id}}">{{city.name}}</option>
-                {% endfor %}
+                <select name="current_city" required="" id="id_current_city form_two"> 
+                    {% for city in cities %}        
+                    {% if user.profile.current_city.id == city.id %}
+                        <option value="{{user.profile.current_city.id}}" selected="">{{user.profile.current_city}}</option>
+                    {% else %}
+                        <option value="{{city.id}}">{{city.name}}</option>
+                    {% endif %}
+                    {% endfor %}
             
 
-            
             <input  type="hidden" name="user_id" value="{{user.id}}"  id="form_two">
             </div>
             
