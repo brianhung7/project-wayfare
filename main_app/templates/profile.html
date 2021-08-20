@@ -10,7 +10,6 @@
         <img class="m-3" src="{{user.profile.avatar}}" alt="" srcset="" width=250px>
         <p>Current City: {{user.profile.current_city}}</p>
         <p>Join Date: {{user.date_joined}}</p>
-        <a href="{% url 'update_profile'%}">Update Profile</a>
         <a class="btn" data-bs-toggle="modal" data-bs-target="#update-modal" id="update">Update Profile</a>
 
     </div>
@@ -63,7 +62,7 @@
                 <div><img src="{{post.city.img}}" alt="" srcset="" width=250px> </div>
                 <!--{{post.content}}-->
             </div> {% endcomment %}
-            <div class="card ms-1 me-1 mt-3" style="width: 18rem;">
+            <div class="card ms-1 me-2 mt-3" style="width: 18rem;">
                 <img src="{{post.city.img}}" class="card-img-top mt-2" alt="{{post.city}}">
                 <div class="card-body">
                     <h5 class="card-title">{{post.title}}</h5>
