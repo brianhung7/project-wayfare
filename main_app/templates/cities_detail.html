@@ -2,19 +2,42 @@
 
 {% block content %}
 
-{% comment %} <h1 style="color:white">{{city_posts}}</h1> {% endcomment %}
- <h1 style="color:white">{{city.name}}</h1>
- <img src="{{city.img}}" alt="" width=400px>
-
-    {% for city_item in city_list %}
-        <h1 style="color:white">{{city_item.name}}</h1>
-    {% endfor %}
-
-    {% for city_post in city_posts %}
-        <h1 style="color:white">Title:{{city_post.title}}</h1>
-        <h1 style="color:white">Content:{{city_post.content}}</h1>
-        <h1 style="color:white">Username:{{city_post.user.username}}</h1>
-        <img src="{{city_post.user.profile.avatar}}" alt="" srcset="" width=250px>
-    {% endfor %} 
+    <div class="container d-flex mt-3" id="title">
+        <div class="container">
+            <div class="col">
+                <h1>Cities</h1>
+                <div class="container flex-column">
+                    {% for city_item in city_list %}
+                    <div class="container d-flex">
+                        <img src="{{city_item.img}}" alt="" width=150px>
+                        <h5 style="color:white">{{city_item.name}}</h5>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="containter d-flex">
+                <div class="container">
+                    <h1>{{city.name}}</h1>
+                </div>
+                <div class="container">
+                    <img src="{{city.img}}" alt="" width=300px>
+                </div>
+            </div>
+            <div class="container">
+                <h1>Posts</h1>
+                {% for city_post in city_posts %}
+                <div class="col d-flex">
+                    <img src="{{city_post.user.profile.avatar}}" alt="" srcset="" width=150px>
+                    <div class="container">
+                        <h5 style="color:white">{{city_post.title}}</h5>
+                        <h5 style="color:white">{{city_post.content}}</h5>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
