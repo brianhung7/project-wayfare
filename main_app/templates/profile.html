@@ -3,13 +3,13 @@
 {% block content %}
 
 <div class="row mt-5" id="title">
-    <div class="col-md-4 d-flex flex-column align-items-center">
+    <div class="col-md-4 d-flex flex-column align-items-center" id="profile-card">
 
         <h3>{{user.username}}'s Profile</h3>
 
-        <img class="m-3" src="{{user.profile.avatar}}" alt="" srcset="" width=250px>
-        <p>Current City: {{user.profile.current_city}}</p>
-        <p>Join Date: {{user.date_joined}}</p>
+        <img class="" src="{{user.profile.avatar}}" alt="" srcset="" width=250px>
+        <p>Favorite City: {{user.profile.current_city}}</p>
+        <p>Member since {{user.date_joined|date:"M j, Y"}}</p>
         <a class="btn" data-bs-toggle="modal" data-bs-target="#update-modal" id="update">Update Profile</a>
 
     </div>
@@ -68,11 +68,11 @@
                 <div><img src="{{post.city.img}}" alt="" srcset="" width=250px> </div>
                 <!--{{post.content}}-->
             </div> {% endcomment %}
-            <div class="card ms-1 me-2 mt-3" style="width: 18rem;">
-                <img src="{{post.city.img}}" class="card-img-top mt-2" alt="{{post.city}}" height=170px>
+            <div class="card ms-6 me-2 mt-3" style="width: 18rem;">
+                <img src="{{post.city.img}}" class="card-img-top" alt="{{post.city}}" height=170px>
                 <div class="card-body">
-                    <h5 class="card-title" style="color:black">{{post.city.name}}</h5>
-                    <p class="card-text" id="content" style="color:black">{{post.content}}</p>
+                    <h5 class="card-title" id="title">{{post.city.name}}</h5>
+                    <p class="card-text" id="content">{{post.content}}</p>
                     <a href="{% url 'post_detail' post.pk %}" class="btn" id="post-btn">{{post.title}}</a>
                 </div>
             </div>
