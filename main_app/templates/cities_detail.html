@@ -21,6 +21,7 @@
             <div class="containter d-flex">
                 <div class="container">
                     <h1>{{city.name}}</h1>
+                    <p>{{city.country}}</p> 
                 </div>
                 <div class="container">
                     <img src="{{city.img}}" alt="" width=300px>
@@ -51,15 +52,15 @@
                                 </div>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="basic-addon1"><i class="fas fa-city"></i></span>
-                                    <select class="form-control" name="current_city" required="">
+                                    <select class="form-control" name="city" required="">
                                         <option value="{{city.id}}">{{city.name}}</option>
                                     </select>
                                 </div>
                             </div>
+                            <input type="hidden" name="next" value="{{ next }}" />
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">Close</button>
                                 <input type="submit" class="btn" value="Post" id="ok-btn"/>
-                                <input type="hidden" name="next" value="{{ next }}" />
                                 </form>
                             </div>
                         </div>
