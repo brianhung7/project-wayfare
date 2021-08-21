@@ -6,11 +6,11 @@
 body {
     background: #283438;
     color: #2b3e44;
-    height: 100vh;
+    height: 100vh - 134px;
 }
 
 .body-container___base {
-    min-height: 100% - 72px; 
+    height: 100%; 
 }
 
 .navbar {
@@ -101,6 +101,10 @@ body {
     font-family: 'Esteban', serif;
 }
 
+#prof-post {
+    width: 1000px;
+}
+
 #update {
     background-color: #5ccbaf;
     color: #ebfcf8;
@@ -145,6 +149,7 @@ body {
     background-color: #2b3e44;
     color: #ebfcf8;
     text-decoration: none;
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.23);
 }
 
 #city-card-img {
@@ -155,6 +160,7 @@ body {
     background-color: #2b3e44;
     color: #ebfcf8;
     text-decoration: none;
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.23);
 }
 
 .card {
@@ -169,8 +175,12 @@ body {
 
 footer{
     background-color: #2b3e44;
+    bottom: 0;
     color: #ebfcf8;
+    display: inline-block;
     font-family: 'Montserrat', sans-serif;
+    position: fixed;
+    /* top: auto; */
     width: 100%;
 }
 
