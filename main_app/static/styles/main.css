@@ -142,9 +142,10 @@ body {
 }
 
 #city-card {
-    background-color: #2b3e44;
+    background-color: #716D73;
     color: #ebfcf8;
     text-decoration: none;
+    border-radius: 15px;
 }
 
 #city-card-img {
@@ -152,9 +153,10 @@ body {
 }
 
 #post-card {
-    background-color: #2b3e44;
+    background-color: #716D73;
     color: #ebfcf8;
     text-decoration: none;
+    border-radius: 15px;
 }
 
 .card {

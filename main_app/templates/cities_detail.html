@@ -12,7 +12,7 @@
                     {% for city_item in city_list %}
                     <a href="{% url 'cities_view' city_item.pk %}" id="city-card">
                         {% if city.pk == city_item.pk %}
-                            <div class="container d-flex mt-2" id="city-card" style="border:5px solid yellow">
+                            <div class="container d-flex mt-2" id="city-card" style="border:10px solid #B0F3EC">
                         {% else %}
                             <div class="container d-flex mt-2" id="city-card">
                         {% endif %}
