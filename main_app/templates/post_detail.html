@@ -9,9 +9,9 @@
         <h3>{{post.city.name}}</h3>
         <div class="container-fluid d-flex justify-content-between" style="width:70%">
             <div class="container-fluid d-flex" >
-                <img src="{{user.profile.avatar}}" alt="" srcset="" height = 50px width = 50px id="post-avatar">
+                <a href="{% url 'profile_view_other' post.user.pk%}"><img src="{{user.profile.avatar}}" alt="" srcset="" height = 50px width = 50px id="post-avatar">
                 <div>
-                    <h6 class="ms-3">{{post.user.username}}</h6>
+                    <h6 class="ms-3" style="color:#5ccbaf">{{post.user.username}}</h6></a>
                     <h7 class="ms-3">{{post.created_at}}</h7>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                 </div>
             </div>
         </div>
-        <p class="mx-5 mt-3" style="width:70%;line-height:30px" id="content">{{post.content}} Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem delectus corrupti necessitatibus mollitia, in illum fuga doloribus aspernatur id adipisci commodi, maiores nihil nisi animi alias veritatis debitis itaque quam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, reiciendis quo nemo maxime labore repudiandae doloremque quos error incidunt in, aut saepe quaerat eveniet temporibus fuga totam ipsum adipisci fugit. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias tempora quas voluptatum vitae nobis ullam esse aspernatur commodi amet consequatur consectetur earum maxime id, deleniti sint veniam, reprehenderit ea. Accusamus. </p>
+        <p class="mx-5 mt-3" style="width:70%;line-height:30px" id="content">{{post.content}} Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem delectus corrupti necessitatibus mollitia, in illum fuga doloribus aspernatur id adipisci commodi, maiores nihil nisi animi alias veritatis debitis itaque quam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, reiciendis quo nemo maxime labore repudiandae doloremque quos error incidunt in, aut saepe quaerat eveniet temporibus fuga totam ipsum adipisci fugit. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias tempora quas voluptatum vitae nobis ullam esse aspernatur commodi amet consequatur consectetur earum maxime id, deleniti sint veniam, reprehenderit ea. </p>
 
     </div>
 

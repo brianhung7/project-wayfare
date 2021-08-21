@@ -4,12 +4,16 @@
 {% block content %}
 
     <div class="container d-flex mt-3" id="title">
-        <div class="container">
+        <div class="container" style="flex-shrink:1.5">
             <div class="col">
                 <h1>Cities</h1>
                 <div class="container flex-column" id="city-column">
                     {% for city_item in city_list %}
-                    <div class="container d-flex mt-2" id="city-card">
+                        {% if city.pk == city_item.pk %}
+                            <div class="container d-flex mt-2" id="city-card" style="border:5px solid yellow">
+                        {% else %}
+                            <div class="container d-flex mt-2" id="city-card">
+                        {% endif %}
                         <div class="container mt-2 mb-2" id="city-card-img">
                             <a href="{% url 'cities_view' city_item.pk %}"><img src="{{city_item.img}}" alt="" width=150px></a>
                         </div>
