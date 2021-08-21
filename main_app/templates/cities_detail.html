@@ -7,11 +7,16 @@
         <div class="container">
             <div class="col">
                 <h1>Cities</h1>
-                <div class="container flex-column">
+                <div class="container flex-column" id="city-column">
                     {% for city_item in city_list %}
-                    <div class="container d-flex mt-2">
-                        <a href="{% url 'cities_view' city_item.pk %}"><img src="{{city_item.img}}" alt="" width=150px></a>
-                        <h5 style="color:white">{{city_item.name}}</h5>
+                    <div class="container d-flex mt-2" id="city-card">
+                        <div class="container mt-2 mb-2" id="city-card-img">
+                            <a href="{% url 'cities_view' city_item.pk %}"><img src="{{city_item.img}}" alt="" width=150px></a>
+                        </div>
+                        <div class="container mt-4" id="city-names">
+                            <h5 class="">{{city_item.name}}</h5>
+                            <p class="">{{city_item.country}}</p>
+                        </div>
                     </div>
                     {% endfor %}
                 </div>
@@ -29,7 +34,7 @@
             </div>
             <div class="d-flex justify-content-end mt-3">
                 
-                <button type="button " class="btn" data-bs-toggle="modal" data-bs-target="#post-modal" id="post-btn"><i class="fas fa-plus-square"></i></button>
+                <button type="button " class="btn me-3" data-bs-toggle="modal" data-bs-target="#post-modal" id="post-btn"><i class="fas fa-plus-square"></i></button>
 
                 <div class="modal" tabindex="-1" id="post-modal">
                     <div class="modal-dialog">
@@ -71,11 +76,12 @@
             <div class="container">
                 <h1>Posts</h1>
                 {% for city_post in city_posts %}
-                <div class="col d-flex">
+                <div class="col d-flex mt-2" id="post-card">
                     <img src="{{city_post.user.profile.avatar}}" alt="" srcset="" width=150px>
-                    <div class="container">
+                    <div class="container mt-3">
                         <a href="{% url 'post_detail' city_post.pk %}"><h5 style="color:white">{{city_post.title}}</h5></a>
                         <h5 style="color:white" id="content">{{city_post.content}}</h5>
+                        <p>{{city_post.created_at|date:"M j, Y"}}</p>
                     </div>
                 </div>
                 {% endfor %}

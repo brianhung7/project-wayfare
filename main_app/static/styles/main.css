@@ -4,7 +4,7 @@
 }
 
 body {
-    background: #2b3e44;
+    background: #283438;
     color: #2b3e44;
     height: 100vh;
 }
@@ -108,6 +108,18 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+#edit-btn{
+    background-color: #5ccbaf;
+    border: none;
+    color: #ebfcf8;
+}
+
+#delete_post {
+    background-color: #cb5c5c;
+    border: none;
+    color: #ebfcf8;
+}
+
 #post-btn{
     background-color: #5ccbaf;
     color: #ebfcf8;
@@ -118,15 +130,39 @@ body {
     border-radius: 50px;
 }
 
-.card-body > .card-title {
+/* .card-body > .card-title {
     color: #2b3e44
 }
 
 .card-body > #content {
     color: #2b3e44
+} */
+
+#city-column {
+    padding-left: 0;
 }
 
+#city-card {
+    background-color: #2b3e44;
+}
 
+#city-card-img {
+    width: 175px;
+}
+
+#post-card {
+    background-color: #2b3e44;
+}
+
+.card {
+    border: none;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.card-body {
+    background-color: #2b3e44;
+}
 
 footer{
     color: #ebfcf8;
