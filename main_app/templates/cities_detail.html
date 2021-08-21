@@ -3,25 +3,29 @@
 
 {% block content %}
 
-    <div class="container d-flex mt-3" id="title">
+
+    <div class="container d-flex mt-5 mb-5" id="title">
         <div class="container" style="flex-shrink:1.5">
             <div class="col">
                 <h1>Cities</h1>
                 <div class="container flex-column" id="city-column">
                     {% for city_item in city_list %}
+                    <a href="{% url 'cities_view' city_item.pk %}" id="city-card">
                         {% if city.pk == city_item.pk %}
                             <div class="container d-flex mt-2" id="city-card" style="border:5px solid yellow">
                         {% else %}
                             <div class="container d-flex mt-2" id="city-card">
                         {% endif %}
+
                         <div class="container mt-2 mb-2" id="city-card-img">
-                            <a href="{% url 'cities_view' city_item.pk %}"><img src="{{city_item.img}}" alt="" width=150px></a>
+                            <img src="{{city_item.img}}" alt="" width=150px>
                         </div>
                         <div class="container mt-4" id="city-names">
-                            <h5 class="">{{city_item.name}}</h5>
+                            <h5 class="disabled">{{city_item.name}}</h5>
                             <p class="">{{city_item.country}}</p>
                         </div>
                     </div>
+                    </a>
                     {% endfor %}
                 </div>
             </div>
@@ -80,14 +84,16 @@
             <div class="container">
                 <h1>Posts</h1>
                 {% for city_post in city_posts %}
+                <a href="{% url 'post_detail' city_post.pk %}" id="post-card">
                 <div class="col d-flex mt-2" id="post-card">
                     <img src="{{city_post.user.profile.avatar}}" alt="" srcset="" width=150px>
                     <div class="container mt-3">
-                        <a href="{% url 'post_detail' city_post.pk %}"><h5 style="color:white">{{city_post.title}}</h5></a>
+                        <h5 style="color:white">{{city_post.title}}</h5>
                         <h5 style="color:white" id="content">{{city_post.content}}</h5>
                         <p>{{city_post.created_at|date:"M j, Y"}}</p>
                     </div>
                 </div>
+                </a>
                 {% endfor %}
             </div>
         </div>

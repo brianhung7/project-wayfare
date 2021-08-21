@@ -10,8 +10,7 @@ body {
 }
 
 .body-container___base {
-    min-height: 100%; 
-    margin-bottom: -50px;
+    min-height: 100% - 72px; 
 }
 
 .navbar {
@@ -144,6 +143,8 @@ body {
 
 #city-card {
     background-color: #2b3e44;
+    color: #ebfcf8;
+    text-decoration: none;
 }
 
 #city-card-img {
@@ -152,6 +153,8 @@ body {
 
 #post-card {
     background-color: #2b3e44;
+    color: #ebfcf8;
+    text-decoration: none;
 }
 
 .card {
@@ -165,6 +168,7 @@ body {
 }
 
 footer{
+    background-color: #2b3e44;
     color: #ebfcf8;
     font-family: 'Montserrat', sans-serif;
     width: 100%;
