@@ -25,7 +25,7 @@
 <div class="body-container___base">
     <nav class="navbar">
     <div class="container-fluid nav-bar___base">
-        <a class="navbar-brand" href="{% url 'home' %}" id="nav-brand"><i class="fas fa-walking"></i>    Wayfarer</a>
+        <a class="navbar-brand" href="{% url 'user_city' %}" id="nav-brand"><i class="fas fa-walking"></i>    Wayfarer</a>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             {% if user.is_authenticated %}
                 <span class="mt-2 me-2" id="username">Welcome: {{user.username}}</span>
