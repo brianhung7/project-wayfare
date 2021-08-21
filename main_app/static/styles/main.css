@@ -6,11 +6,11 @@
 body {
     background: #283438;
     color: #2b3e44;
-    height: 100vh;
+    height: 100vh - 134px;
 }
 
 .body-container___base {
-    min-height: 100% - 72px; 
+    height: 100%; 
 }
 
 .navbar {
@@ -30,6 +30,9 @@ body {
     text-decoration: none;
 }
 
+.btn:hover{
+    box-shadow: 0 0 20px 5px black;
+}
 .modal-dialog {
     color: #2b3e44;
 }
@@ -101,6 +104,10 @@ body {
     font-family: 'Esteban', serif;
 }
 
+#prof-post {
+    width: 1000px;
+}
+
 #update {
     background-color: #5ccbaf;
     color: #ebfcf8;
@@ -142,10 +149,11 @@ body {
 }
 
 #city-card {
-    background-color: #716D73;
+    background-color: #2b3e44;
     color: #ebfcf8;
     text-decoration: none;
-    border-radius: 15px;
+    box-shadow: 5px 0px 15px 8px rgba(0,0,0,0.23);
+    border-radius: 10px;
 }
 
 #city-card-img {
@@ -153,10 +161,11 @@ body {
 }
 
 #post-card {
-    background-color: #716D73;
+    background-color: #2b3e44;
     color: #ebfcf8;
     text-decoration: none;
-    border-radius: 15px;
+    box-shadow: 5px 0px 15px 8px rgba(0,0,0,0.23);
+    border-radius: 10px;
 }
 
 .card {
@@ -169,10 +178,18 @@ body {
     background-color: #2b3e44;
 }
 
+#city-view-image{
+    border:5px solid #B0F3EC
+}
+
 footer{
     background-color: #2b3e44;
+    bottom: 0;
     color: #ebfcf8;
+    display: inline-block;
     font-family: 'Montserrat', sans-serif;
+    position: fixed;
+    /* top: auto; */
     width: 100%;
 }
 

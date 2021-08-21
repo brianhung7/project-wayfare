@@ -12,7 +12,7 @@
                     {% for city_item in city_list %}
                     <a href="{% url 'cities_view' city_item.pk %}" id="city-card">
                         {% if city.pk == city_item.pk %}
-                            <div class="container d-flex mt-2" id="city-card" style="border:10px solid #B0F3EC">
+                            <div class="container d-flex mt-2" id="city-card" style="border:5px solid #B0F3EC">
                         {% else %}
                             <div class="container d-flex mt-2" id="city-card">
                         {% endif %}
@@ -36,8 +36,8 @@
                     <h1>{{city.name}}</h1>
                     <p>{{city.country}}</p> 
                 </div>
-                <div class="container">
-                    <img src="{{city.img}}" alt="" width=300px>
+                <div class="container" >
+                    <img src="{{city.img}}" alt="" width=300px id="city-view-image">
                 </div>
             </div>
             <div class="d-flex justify-content-end mt-3">
