@@ -147,3 +147,27 @@ class PostDelete(DeleteView):
     model = Post
     template_name = "post_delete_confirmation.html"
     success_url = "/cities/"
+
+
+class ProfileViewOther(DetailView):
+    model = Profile
+    template_name = 'profile_other.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['posts'] = Post.objects.filter(user_id=kwargs['object'].pk)
+        context['cities'] = City.objects.all
+        if self.request.user.pk == self.kwargs['pk']:
+            context['profile_is_user'] = True
+        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     pk_key = self.kwargs['pk']
+    #     if self.request.user.pk == pk_key:
+    #         return redirect("profile_view")
+    #     return context
+    # def get(self,request,*args,**kwargs):
+    #     current_user_pk = self.request.user.pk
+    #     user_lookup_pk = kwargs['pk']
+    #     if current_user_pk == user_lookup_pk:
+    #         return redirect('profile_view')
+    #     return print("Hello")
