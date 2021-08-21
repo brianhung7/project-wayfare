@@ -30,6 +30,9 @@ body {
     text-decoration: none;
 }
 
+.btn:hover{
+    box-shadow: 0 0 20px 5px black;
+}
 .modal-dialog {
     color: #2b3e44;
 }
@@ -149,7 +152,8 @@ body {
     background-color: #2b3e44;
     color: #ebfcf8;
     text-decoration: none;
-    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.23);
+    box-shadow: 5px 0px 15px 8px rgba(0,0,0,0.23);
+    border-radius: 10px;
 }
 
 #city-card-img {
@@ -160,7 +164,8 @@ body {
     background-color: #2b3e44;
     color: #ebfcf8;
     text-decoration: none;
-    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.23);
+    box-shadow: 5px 0px 15px 8px rgba(0,0,0,0.23);
+    border-radius: 10px;
 }
 
 .card {
@@ -171,6 +176,10 @@ body {
 
 .card-body {
     background-color: #2b3e44;
+}
+
+#city-view-image{
+    border:5px solid #B0F3EC
 }
 
 footer{
