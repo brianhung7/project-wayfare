@@ -17,8 +17,8 @@
             </div>
             <div class="container-fluid d-flex justify-content-end">
                 <div >
-                    <a class="btn me-md-2 btn-info" href="{% url 'post_update' post.pk %}">Edit Post</a>
-                    <button class="btn me-md-2 btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#delete-post-modal" id="delete_post">Delete Post</button>
+                    <a class="btn me-md-2" href="{% url 'post_update' post.pk %}" id="edit-btn"><i class="fas fa-edit"></i></a>
+                    <button class="btn me-md-2" type="button" data-bs-toggle="modal" data-bs-target="#delete-post-modal" id="delete_post"><i class="fas fa-times fa-lg"></i></button>
                 </div>
             </div>
         </div>
@@ -26,7 +26,7 @@
 
     </div>
 
-     <div class="modal" tabindex="-1" id="delete-post-modal">
+    <div class="modal" tabindex="-1" id="delete-post-modal">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -40,7 +40,7 @@
 
                             <input type="hidden" name="next" value="{{ next }}" />
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">Close</button>
-                            <input type="submit" class="btn btn-danger" value="Delete Post"/>
+                            <input type="submit" class="btn" value="Delete Post" id="delete_post"/>
 
                     </p>
                 </div>
