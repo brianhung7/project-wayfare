@@ -101,6 +101,10 @@ body {
     font-family: 'Esteban', serif;
 }
 
+#prof-post {
+    width: 1000px;
+}
+
 #update {
     background-color: #5ccbaf;
     color: #ebfcf8;
