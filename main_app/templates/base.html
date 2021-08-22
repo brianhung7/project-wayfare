@@ -86,29 +86,34 @@
                         {% csrf_token %}
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
-                            {{ signup_form.username|add_class:"form-control"|attr:"placeholder:Username" }}
+                            <input style="color:black" type="text" class="form-control" placeholder="Username" name= "username" id="username" aria-label="Username" aria-describedby="basic-addon1">
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
-                            {{ signup_form.password1|add_class:"form-control"|attr:"placeholder:Password" }}
+                                <input type="password" class="form-control" placeholder="Password" name="password1" aria-label="Password" aria-describedby="basic-addon1" id="password1">
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
-                            {{ signup_form.password2|add_class:"form-control"|attr:"placeholder:Confirm Password" }}
+                                <input type="password" class="form-control" placeholder="Confirm Password" name="password2" aria-label="Password" aria-describedby="basic-addon1" id="password2">
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-city"></i></span>
-                            {{ profile_form.current_city|add_class:"form-control"|attr:"placeholder:Current City" }}
-                            {% comment %} This makes it so default value of city dropdown has a message {% endcomment %}
-                            <script>
-                                options = document.getElementsByTagName('option');
-                                options[0].innerHTML = "Select Current City";
-                            </script>
+                            <select class="form-control" name="current_city" required="" id="id_current_city form_two">
+                                <option value selected>Select Current City</option>
+                                <option value="1">San Francisco</option>
+                                <option value="2">Gibraltar</option>
+                                <option value="3">London</option>
+                                <option value="4">Paris</option>
+                                <option value="5">Hong Kong</option>
+                                <option value="6">Dubai</option>
+                                <option value="7">New York City</option>
+                            </select>
                         </div>
-                        <div class="input-group mb-3">
+                        {% comment %} <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-user-tie"></i></span>
                             {{ profile_form.avatar|add_class:"form-control"|attr:"placeholder:Avatar"}}
-                        </div>
+                        </div> {% endcomment %}
+                        <input type="hidden" name="avatar" value="https://i.imgur.com/eYlOXmc.png" maxlength="500" placeholder="Avatar" class="form-control" required="" id="id_avatar">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">Close</button>
