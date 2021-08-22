@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 
-{% block content %}      
-    <div class="mt-5" style="width:400px; background-color:white;margin:auto;border:5px solid black;border-radius:10px"  >
+{% block content %}     
+  {% if signup_form.errors or profile_form.errors %}
+    <h5 class="alert alert-danger">{{signup_form.errors}} {{profile_form.errors}} </h5>
+  {% endif %}
+    <div class="mt-5" style="width:600px; background-color:white;margin:auto;border:5px solid black;border-radius:10px"  >
          <form method="POST" action="{% url 'signup' %}">
             <div class="d-flex align-items-center flex-column my-2">
                         <input type="hidden" name="form_name" value="login_form">  
