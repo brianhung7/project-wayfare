@@ -6,7 +6,8 @@
 body {
     background: #283438;
     color: #2b3e44;
-    height: 100vh - 134px;
+    height: 100vh - 72px;
+    margin-bottom: 90px;
 }
 
 .body-container___base {
