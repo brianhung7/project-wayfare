@@ -7,8 +7,8 @@
 
         <h3>{{profile.user.username}}'s Profile</h3>
 
-        <img class="m-3" src="{{profile.user.profile.avatar}}" alt="" srcset="" width=250px>
-        <p>Current City: {{user.profile.current_city}}</p>
+        <img class="m-3" src="{{profile.avatar}}" alt="" srcset="" width=250px>
+        <p>Current City: {{profile.current_city}}</p>
         <p>Join Date: {{profile.user.date_joined}}</p>
         {% if profile_is_user  %}
         <a class="btn" data-bs-toggle="modal" data-bs-target="#update-modal" id="update">Update Profile</a>
