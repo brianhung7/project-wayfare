@@ -1,10 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <form method="POST">
-    {% csrf_token %}
 
-    {{form.as_p}}
-    <input type="submit" value="Confim Delete?">
-    </form>
+    {% if user.is_authenticated %}
+        {% if user.username == post_creator %}
+            <form method="POST">
+            {% csrf_token %}
+
+            {{form.as_p}}
+            <input type="submit" value="Confim Delete?">
+            </form>
+
+        {% else %}
+            <h1 style="color: white">You are not authorized to access this information</h1>
+        {% endif %}
+    {% endif %}
 {% endblock %}

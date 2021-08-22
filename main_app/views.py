@@ -104,8 +104,6 @@ class PostDetail(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["city_list"] = City.objects.all()
-        #if the current user is equal to the user who made the post
-        #make the can edit context true
         post_key = self.kwargs['pk']
         post_creator = Post.objects.get(id=post_key).user.username
         context["post_creator"] = post_creator
@@ -119,6 +117,7 @@ class MainUserCity(View):
         # print(current_user)
         return redirect('/cities/1/')
 
+@method_decorator(login_required, name='dispatch')
 class CitiesView(DetailView):
     model = City
     template_name = "cities_detail.html"
@@ -151,6 +150,14 @@ class PostUpdate(UpdateView):
     fields = ['title', 'content', 'city']
     template_name = 'post_update.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        #if the current user != the user who made the post, send back to the PostDetail view
+        post_key = self.kwargs['pk']
+        post_creator = Post.objects.get(id=post_key).user.username
+        context["post_creator"] = post_creator
+        return context
+
     def get_success_url(self):
         return reverse("post_detail", kwargs={'pk': self.object.pk})
 
@@ -159,6 +166,14 @@ class PostDelete(DeleteView):
     model = Post
     template_name = "post_delete_confirmation.html"
     success_url = "/cities/"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        #if the current user != the user who made the post, send back to the PostDetail view
+        post_key = self.kwargs['pk']
+        post_creator = Post.objects.get(id=post_key).user.username
+        context["post_creator"] = post_creator
+        return context
 
 
 class ProfileViewOther(DetailView):
