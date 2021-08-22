@@ -97,10 +97,10 @@ class PostDetail(DetailView):
     model = Post
     template_name = 'post_detail.html'
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context["post"] = Post.objects.get()
-    #     return context
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["city_list"] = City.objects.all()
+        return context
 
 class MainUserCity(View):
 
@@ -171,3 +171,15 @@ class ProfileViewOther(DetailView):
     #     if current_user_pk == user_lookup_pk:
     #         return redirect('profile_view')
     #     return print("Hello")
+
+
+class AboutView(TemplateView):
+    template_name = 'about.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        signup_form = UserCreationForm()
+        profile_form = ProfileUpdateForm()
+        context["signup_form"] = signup_form
+        context["profile_form"] = profile_form
+        return context

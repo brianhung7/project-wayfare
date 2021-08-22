@@ -64,9 +64,19 @@
                                     <textarea type="text" class="form-control" placeholder="Content" name= "content" id="post-content" aria-label="Content" aria-describedby="basic-addon1" value="{{post.content}}"></textarea>
                                 </div>
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-city"></i></span>
+                                    <span class="input-group-text dropdown-toggle" id="basic-addon1"><i class="fas fa-city"></i></span>
                                     <select class="form-control" name="city" required="">
-                                        <option value="{{city.id}}">{{city.name}}</option>
+                                    {% comment %}
+                                        Following lines for multiple city selection, defaults to current city view
+                                    {% endcomment %}
+                                    {% for city_item in city_list %}
+                                        {% if city_item.pk == city.id %}
+                                            <option value="{{city.id}}" selected="">{{city.name}}</option>
+                                        {% else %}
+                                            <option value="{{city_item.pk}}">{{city_item.name}}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                        {% comment %} <option value="{{city.id}}">{{city.name}}</option> {% endcomment %}
                                     </select>
                                 </div>
                             </div>
