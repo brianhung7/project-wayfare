@@ -34,16 +34,16 @@
             <div class="containter d-flex">
                 <div class="container">
                     <h1>{{city.name}}</h1>
-                    <p>{{city.country}}</p> 
+                    <h4>{{city.country}}</h4> 
                 </div>
                 <div class="container" >
                     <img src="{{city.img}}" alt="" width=300px id="city-view-image">
                 </div>
             </div>
             <div class="d-flex justify-content-end mt-3">
-                
-                <button type="button " class="btn me-3" data-bs-toggle="modal" data-bs-target="#post-modal" id="post-btn"><i class="fas fa-plus-square"></i></button>
-
+                {% if user.is_authenticated %}
+                    <button type="button " class="btn me-3" data-bs-toggle="modal" data-bs-target="#post-modal" id="post-btn"><i class="fas fa-plus-square"></i></button>
+                {% endif %}
                 <div class="modal" tabindex="-1" id="post-modal">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -57,11 +57,11 @@
                                 {% csrf_token %}
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="basic-addon1"><i class="far fa-edit"></i></span>
-                                    <input type="text" class="form-control" placeholder="Post Title" name= "title" id="post-title" aria-label="Title" aria-describedby="basic-addon1" value="{{post.title}}" style="color:black">
+                                    <input type="text" class="form-control" placeholder="Post Title" name= "title" id="post-title" aria-label="Title" aria-describedby="basic-addon1" value="{{post.title}}" style="color:black" minlength="1" maxlength="200" required>
                                 </div>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="basic-addon1"><i class="fas fa-quote-right"></i></span>
-                                    <textarea type="text" class="form-control" placeholder="Content" name= "content" id="post-content" aria-label="Content" aria-describedby="basic-addon1" value="{{post.content}}"></textarea>
+                                    <textarea type="text" class="form-control" placeholder="Content" name= "content" id="post-content" aria-label="Content" aria-describedby="basic-addon1" value="{{post.content}}" minlength="1" required></textarea>
                                 </div>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text dropdown-toggle" id="basic-addon1"><i class="fas fa-city"></i></span>

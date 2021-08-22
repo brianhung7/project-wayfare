@@ -13,6 +13,9 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from .forms import UserUpdateForm, ProfileUpdateForm, ProfileCreateForm
 from django.urls import reverse
+
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 # Create your views here.
 class Home(TemplateView):
     template_name= 'home.html'
@@ -66,6 +69,7 @@ class ProfileView(TemplateView):
         return context
 
 
+@method_decorator(login_required, name='dispatch')
 class UpdateProfile(UpdateView):
     #get route -> Handles displaying of user and profile update forms
     def get(self, request):
@@ -122,6 +126,7 @@ class CitiesView(DetailView):
         
         return context
 
+@method_decorator(login_required, name='dispatch')
 class PostCreate(CreateView):
     model = Post
     fields = ['title', 'content', 'city']
@@ -135,6 +140,7 @@ class PostCreate(CreateView):
         print("SUCCESS URL")
         return reverse("post_detail", kwargs={'pk': self.object.pk})
 
+@method_decorator(login_required, name='dispatch')
 class PostUpdate(UpdateView):
     model = Post
     fields = ['title', 'content', 'city']
@@ -143,6 +149,7 @@ class PostUpdate(UpdateView):
     def get_success_url(self):
         return reverse("post_detail", kwargs={'pk': self.object.pk})
 
+@method_decorator(login_required, name='dispatch')
 class PostDelete(DeleteView):
     model = Post
     template_name = "post_delete_confirmation.html"

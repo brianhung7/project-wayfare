@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1 class="title" style="text-align:center">Log In</h1>
+<h1 id="title" class='mt-5' style="text-align:center">Sign In</h1>
 
 {% if user.is_authenticated %}
     <h3 class="mb-5">{{user.username}} you are already logged in. Please <a href="{% url 'logout' %}">Logout.</a></h3>

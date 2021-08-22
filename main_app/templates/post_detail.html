@@ -39,11 +39,11 @@
                                 {% csrf_token %}
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="basic-addon1"><i class="far fa-edit"></i></span>
-                                    <input type="text" class="form-control" placeholder="Post Title" name= "title" id="post-title" aria-label="Title" aria-describedby="basic-addon1" value="{{post.title}}" style="color:black">
+                                    <input type="text" class="form-control" placeholder="Post Title" name= "title" id="post-title" aria-label="Title" aria-describedby="basic-addon1" value="{{post.title}}" style="color:black" minlength="1" maxlength="200" required>
                                 </div>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="basic-addon1"><i class="fas fa-quote-right"></i></span>
-                                    <textarea type="text" class="form-control" placeholder="Content" name= "content" id="post-content" aria-label="Content" aria-describedby="basic-addon1" value="{{post.content}}">{{post.content}}</textarea>
+                                    <textarea type="text" class="form-control" placeholder="Content" name= "content" id="post-content" aria-label="Content" aria-describedby="basic-addon1" value="{{post.content}}" minlength="1" required>{{post.content}}</textarea>
                                 </div>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text dropdown-toggle" id="basic-addon1"><i class="fas fa-city"></i></span>
