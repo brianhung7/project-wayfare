@@ -34,16 +34,16 @@
             <div class="containter d-flex">
                 <div class="container">
                     <h1>{{city.name}}</h1>
-                    <p>{{city.country}}</p> 
+                    <h4>{{city.country}}</h4> 
                 </div>
                 <div class="container" >
                     <img src="{{city.img}}" alt="" width=300px id="city-view-image">
                 </div>
             </div>
             <div class="d-flex justify-content-end mt-3">
-                
-                <button type="button " class="btn me-3" data-bs-toggle="modal" data-bs-target="#post-modal" id="post-btn"><i class="fas fa-plus-square"></i></button>
-
+                {% if user.is_authenticated %}
+                    <button type="button " class="btn me-3" data-bs-toggle="modal" data-bs-target="#post-modal" id="post-btn"><i class="fas fa-plus-square"></i></button>
+                {% endif %}
                 <div class="modal" tabindex="-1" id="post-modal">
                     <div class="modal-dialog">
                         <div class="modal-content">
