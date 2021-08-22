@@ -104,6 +104,11 @@ class PostDetail(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["city_list"] = City.objects.all()
+        #if the current user is equal to the user who made the post
+        #make the can edit context true
+        post_key = self.kwargs['pk']
+        post_creator = Post.objects.get(id=post_key).user.username
+        context["post_creator"] = post_creator
         return context
 
 class MainUserCity(View):
