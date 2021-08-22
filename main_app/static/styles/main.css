@@ -184,13 +184,13 @@ body {
 
 footer{
     background-color: #2b3e44;
-    bottom: 0;
     color: #ebfcf8;
     display: inline-block;
     font-family: 'Montserrat', sans-serif;
     position: fixed;
-    /* top: auto; */
+    top: auto;
     width: 100%;
+    bottom:0;
 }
 
 @media (min-width: 1500px) {
