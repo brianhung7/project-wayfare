@@ -48,14 +48,20 @@
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="basic-addon1"><i class="fas fa-city"></i></span>
                                     <select class="form-control" name="city" required="">
-                                        <option value="{{post.city.pk}}">{{post.city}}</option>
+                                    {% for city in city_list %}
+                                    {% if post.city.pk == city.id %}
+                                        <option value="{{post.city.pk}}" selected="">{{post.city}}</option>
+                                    {% else %}
+                                        <option value="{{city.id}}">{{city.name}}</option>
+                                    {% endif %}
+                                    {% endfor %}
                                     </select>
                                 </div>
                             </div>
                             <input type="hidden" name="next" value="{{ next }}" />
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">Close</button>
-                                <input type="submit" class="btn" value="Post" id="ok-btn"/>
+                                <input type="submit" class="btn" value="Update Post" id="ok-btn"/>
                                 </form>
                             </div>
                         </div>
