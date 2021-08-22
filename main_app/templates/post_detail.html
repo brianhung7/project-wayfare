@@ -3,7 +3,6 @@
 
 {% block content %}
     <div class="d-flex align-items-center flex-column mb-5" id="title">
-
         <img src="{{post.city.img}}" alt="" srcset="" width = 100% height=500px>
         <h3 class="mt-2">{{post.title}}</h3>
         <h3>{{post.city.name}}</h3>
@@ -15,12 +14,18 @@
                     <h7 class="ms-3">{{post.created_at}}</h7>
                 </div>
             </div>
-            <div class="container-fluid d-flex justify-content-end">
-                <div >
-                    <a class="btn me-md-2" href="" data-bs-toggle="modal" data-bs-target="#post-update-modal" id="edit-btn"><i class="fas fa-edit"></i></a>
-                    <button class="btn me-md-2" type="button" data-bs-toggle="modal" data-bs-target="#delete-post-modal" id="delete_post"><i class="fas fa-times fa-lg"></i></button>
+            <!-- START: check if the user.is_authenticated and if user.username = post_creator -->
+            {% if user.is_authenticated %}
+                {% if user.username == post_creator %}
+                <div class="container-fluid d-flex justify-content-end">
+                    <div >
+                        <a class="btn me-md-2" href="" data-bs-toggle="modal" data-bs-target="#post-update-modal" id="edit-btn"><i class="fas fa-edit"></i></a>
+                        <button class="btn me-md-2" type="button" data-bs-toggle="modal" data-bs-target="#delete-post-modal" id="delete_post"><i class="fas fa-times fa-lg"></i></button>
+                    </div>
                 </div>
-            </div>
+                {% endif %}
+            {% endif %}
+            <!-- END -->
         </div>
         <p class="mx-5 mt-3" style="width:70%;line-height:30px" id="content">{{post.content}} Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem delectus corrupti necessitatibus mollitia, in illum fuga doloribus aspernatur id adipisci commodi, maiores nihil nisi animi alias veritatis debitis itaque quam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, reiciendis quo nemo maxime labore repudiandae doloremque quos error incidunt in, aut saepe quaerat eveniet temporibus fuga totam ipsum adipisci fugit. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias tempora quas voluptatum vitae nobis ullam esse aspernatur commodi amet consequatur consectetur earum maxime id, deleniti sint veniam, reprehenderit ea. </p>
 
