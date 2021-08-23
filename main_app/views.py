@@ -183,7 +183,7 @@ class ProfileViewOther(DetailView):
         context = super().get_context_data(**kwargs)
         context['posts'] = Post.objects.filter(user_id=kwargs['object'].pk)
         context['cities'] = City.objects.all
-        if self.request.user.pk == self.kwargs['pk']:
+        if self.request.user.profile.pk == self.kwargs['pk']:
             context['profile_is_user'] = True
         return context
     # def get_context_data(self, **kwargs):
