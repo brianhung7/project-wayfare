@@ -10,9 +10,9 @@ body {
     margin-bottom: 90px;
 }
 
-/* .body-container___base {
-    height: 100%; 
-} */
+.body-container___base {
+    height: 100vh; 
+}
 
 .navbar {
     background-color: #b0f3ec;
