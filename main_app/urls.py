@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import Home, Signup, ProfileView, PostDetail, UpdateProfile, CitiesView, PostCreate, PostUpdate, MainUserCity, PostDelete, ProfileViewOther, AboutView, CommentCreate
+from .views import Home, Signup, ProfileView, PostDetail, UpdateProfile, CitiesView, PostCreate, PostUpdate, MainUserCity, PostDelete, ProfileViewOther, AboutView, CommentCreate, CommentDelete
 
 urlpatterns = [
 	path('', Home.as_view(), name="home"),
@@ -16,5 +16,6 @@ urlpatterns = [
     path('cities/', MainUserCity.as_view(), name="user_city"),
     path('about/', AboutView.as_view(), name='about_view'),
     path('posts/<int:pk>/comments/new/', CommentCreate.as_view(), name="comment_create"),
+    path('posts/<int:pk>/comments/<int:comment_pk>/delete',CommentDelete.as_view(),name="comment_delete"),
     
 ]

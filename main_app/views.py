@@ -233,14 +233,40 @@ class AboutView(TemplateView):
 
 @method_decorator(login_required, name='dispatch')
 class CommentCreate(View):
-    # def get(self,request,pk):
-
-
-
     def post(self, request, pk):
         content = request.POST.get('content')
         post = Post.objects.get(pk=pk)
         user = request.user
         Comment.objects.create(content=content,post=post,user=user)
+        return redirect('post_detail', pk=pk)
 
+#@method_decorator(login_required, name='dispatch')
+# class CommentDelete(DeleteView):
+#     model = Comment
+#     template_name = "comment_delete_confirmation.html"
+
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     #if the current user != the user who made the post, send back to the PostDetail view
+    #     comment_key = self.kwargs['comment_pk']
+    #     print("#################################")
+    #     print(comment_key)
+    #     comment_creator = Comment.objects.get(id=comment_key).user.username
+    #     context["comment_creator"] = comment_creator
+    #     return context
+
+    # success_url = "/cities/"
+
+# class CommentDelete(View):
+#     def post(self,request,pk):
+#         Comment.objects.delete()
+
+@method_decorator(login_required, name='dispatch')
+class CommentDelete(View):
+    success_url = "/cities/"
+    def get(self,request,pk,comment_pk):
+        # delete_query = request.GET.get('delete_query')
+
+        # if delete_query == "remove":
+        Comment.objects.get(id=comment_pk).delete()
         return redirect('post_detail', pk=pk)
