@@ -48,6 +48,7 @@
 
             {% for post_comment in post_comments %}
         <div>
+            <div class="container">
             <div class="container d-flex">
                 <img src="{{post_comment.user.profile.avatar}}" alt="" height = 50px width = 50px>
                 <div class="container">
@@ -71,9 +72,10 @@
                         {% endif %}
                         {% endif %}
                 </div>
-                    {% endfor %}
+            </div>
             </div>
         </div>
+                    {% endfor %}
     </div>
 
     <div class="modal" tabindex="-1" id="post-update-modal">
