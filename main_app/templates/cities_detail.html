@@ -13,9 +13,9 @@
                     {% for city_item in city_list %}
                     <a href="{% url 'cities_view' city_item.pk %}" id="city-card">
                         {% if city.pk == city_item.pk %}
-                            <div class="container d-flex mt-2" id="city-card" style="border:5px solid #B0F3EC">
+                            <div class="container d-flex mt-3" id="city-card" style="border:5px solid #5CCBAF">
                         {% else %}
-                            <div class="container d-flex mt-2" id="city-card">
+                            <div class="container d-flex mt-2" id="city-card" style="border:3px solid #B0F3EC">
                         {% endif %}
 
                         <div class="container mt-2 mb-2" id="city-card-img">
@@ -96,11 +96,11 @@
                 <h1>Posts</h1>
                 {% for city_post in city_posts %}
                 <a href="{% url 'post_detail' city_post.pk %}" id="post-card">
-                <div class="col d-flex mt-2" id="post-card">
+                <div class="col d-flex mt-3" id="post-card" style="border:3px solid #B0F3EC">
                     <img class="mt-4 ms-2" src="{{city_post.user.profile.avatar}}" alt="" srcset="" height=75px width=75px id="post-avatar">
                     <div class="container mt-3">
-                        <h5 style="color:white">{{city_post.title}}</h5>
-                        <h5 style="color:white" id="content">{{city_post.content}}</h5>
+                        <h5>{{city_post.title}}</h5>
+                        <h5 id="content">{{city_post.content}}</h5>
                         <p>posted {{city_post.created_at|timesince}} ago</p>
                     </div>
                 </div>

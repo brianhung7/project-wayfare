@@ -9,7 +9,8 @@
     <h2 class="my-5" style="color:white;text-align:center">{{user.username}} you are already logged in. Please <a href="{% url 'logout' %}">Logout.</a></h2>
 
 {% else %}
-  <div class="mt-5 pt-2 pb-2" style="width:400px;margin:auto;border-radius:5px" id="account-login">
+  <div style="height:70vh;">
+  <div class="mt-5 pt-2 pb-2" style="width:400px;margin:auto;border-radius:5px;" id="account-login">
     <form class="m-3" method="post" action="{% url 'login' %}">
       <div class="d-flex align-items-center flex-column my-4">
         {% csrf_token %} 
@@ -26,6 +27,7 @@
         <input type="hidden" name="next" value="{{ next }}" />
       </div>
     </form>
+  </div>
   </div>
 {% endif %}
 
