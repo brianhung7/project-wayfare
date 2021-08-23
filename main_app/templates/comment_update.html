@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="mt-5" style="width:400px; background-color:white;margin:auto;border:5px solid black;border-radius:10px"  >
+        <form method="POST" action="{% url 'comment_update' post comment.pk %}">
+        <div class="d-flex align-items-center flex-column my-4">
+            {% csrf_token %} 
+            
+
+            <input  type="hidden" name="user_id" value="{{user.id}}"  id="form_two">
+            </div>
+            <input type="text" value="{{comment.content}}" name="content">
+            
+            <div class="my-2">
+                <input type="submit" value="Update Comment">
+            </div>
+        </div>
+        </form>
+        </div>
+
+{% endblock  %}

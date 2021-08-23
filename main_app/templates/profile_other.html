@@ -10,6 +10,7 @@
         <img class="" src="{{profile.avatar}}" alt="" srcset="" width=250px>
         <p>Favorite City: {{profile.current_city}}</p>
         <p>Member since {{profile.user.date_joined|date:"M j, Y"}}</p>
+        <p>Number of Comments {{num_comments}}</p>
         {% if profile_is_user  %}
         <a class="btn" data-bs-toggle="modal" data-bs-target="#update-modal" id="update">Update Profile</a>
         {% endif %}
