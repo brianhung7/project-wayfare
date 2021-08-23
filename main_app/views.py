@@ -264,7 +264,7 @@ class CommentCreate(View):
 @method_decorator(login_required, name='dispatch')
 class CommentDelete(View):
     success_url = "/cities/"
-    def get(self,request,pk,comment_pk):
+    def post(self,request,pk,comment_pk):
         # delete_query = request.GET.get('delete_query')
 
         # if delete_query == "remove":
