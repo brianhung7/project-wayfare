@@ -31,9 +31,10 @@ body {
     text-decoration: none;
 }
 
-.btn:hover{
+/* .btn:hover{
     box-shadow: 0 0 20px 5px black;
-}
+} */
+
 .modal-dialog {
     color: #2b3e44;
 }
@@ -134,7 +135,7 @@ body {
 }
 
 #post-avatar {
-    border-radius: 50px;
+    border-radius: 100px;
 }
 
 /* .card-body > .card-title {
@@ -153,8 +154,8 @@ body {
     background-color: #2b3e44;
     color: #ebfcf8;
     text-decoration: none;
-    box-shadow: 5px 0px 15px 8px rgba(0,0,0,0.23);
-    border-radius: 10px;
+    box-shadow: 4px 2px 4px 4px rgba(0,0,0,0.05);
+    border-radius: 5px;
 }
 
 #city-card-img {
@@ -165,8 +166,8 @@ body {
     background-color: #2b3e44;
     color: #ebfcf8;
     text-decoration: none;
-    box-shadow: 5px 0px 15px 8px rgba(0,0,0,0.23);
-    border-radius: 10px;
+    box-shadow: 4px 2px 4px 4px rgba(0,0,0,0.05);
+    border-radius: 5px;
 }
 
 .card {
