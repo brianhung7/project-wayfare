@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load humanize %}
 
 {% block content %}
     <div class="d-flex align-items-center flex-column mb-5" id="title">
@@ -11,7 +11,7 @@
                 <a href="{% url 'profile_view_other' post.user.pk%}"><img src="{{post.user.profile.avatar}}" alt="" srcset="" height = 50px width = 50px id="post-avatar">
                 <div>
                     <h6 class="ms-3" style="color:#5ccbaf">{{post.user.username}}</h6></a>
-                    <h7 class="ms-3">{{post.created_at}}</h7>
+                    <h7 class="ms-3">posted {{post.created_at|timesince}} ago</h7>
                 </div>
             </div>
             <!-- START: check if the user.is_authenticated and if user.username = post_creator -->
