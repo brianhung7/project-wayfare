@@ -39,6 +39,15 @@ body {
     color: #2b3e44;
 }
 
+#account-login {
+    background-color: #2b3e44;
+    color: #ebfcf8;
+    text-decoration: none;
+    box-shadow: 4px 2px 4px 4px rgba(0,0,0,0.05);
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+}
+
 #username {
     color: #ebfcf8;
 }
