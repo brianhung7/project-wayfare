@@ -66,7 +66,7 @@ class ProfileView(TemplateView):
         context['posts'] = Post.objects.filter(user=self.request.user)
         context['cities'] = City.objects.all
         context['num_comments'] = len(Comment.objects.filter(user=self.request.user))
-
+        
         return context
 
 
