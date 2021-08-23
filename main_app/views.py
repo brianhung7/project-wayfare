@@ -65,6 +65,7 @@ class ProfileView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['posts'] = Post.objects.filter(user=self.request.user)
         context['cities'] = City.objects.all
+        context['num_comments'] = len(Comment.objects.filter(user=self.request.user))
 
         return context
 
@@ -188,6 +189,7 @@ class ProfileViewOther(DetailView):
         found_user_id = Profile.objects.get(id=kwargs['object'].user.id)
         context['posts'] = Post.objects.filter(user_id=found_user_id.pk)
         context['cities'] = City.objects.all
+        context['num_comments'] = len(Comment.objects.filter(user_id=found_user_id.pk))
         if self.request.user.profile.pk == self.kwargs['pk']:
             context['profile_is_user'] = True
         return context
@@ -269,4 +271,18 @@ class CommentDelete(View):
 
         # if delete_query == "remove":
         Comment.objects.get(id=comment_pk).delete()
+        return redirect('post_detail', pk=pk)
+
+@method_decorator(login_required, name='dispatch')
+class CommentUpdate(UpdateView):
+    def get(self, request, pk, comment_pk):
+        context = {
+            "post": pk,
+            "user": request.user,
+            "comment": Comment.objects.get(id=comment_pk) 
+        }
+        return render(request, "comment_update.html", context)
+
+    def post(self, request, pk, comment_pk):
+        Comment.objects.filter(id=comment_pk).update(content = request.POST["content"])
         return redirect('post_detail', pk=pk)
