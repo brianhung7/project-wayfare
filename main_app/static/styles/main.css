@@ -6,12 +6,15 @@
 body {
     background: linear-gradient(to bottom, #b0f3ec, #ebfcf8);
     color: #2b3e44;
-    height: 100vh - 72px;
+    height: 100vh;
     margin-bottom: 90px;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .body-container___base {
-    height: 100vh; 
+    height: 100%;
+    overflow: auto;
 }
 
 .navbar {

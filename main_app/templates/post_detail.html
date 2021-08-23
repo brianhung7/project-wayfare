@@ -30,30 +30,49 @@
         <p class="mx-5 mt-3" style="width:70%;line-height:30px" id="content">{{post.content}} Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem delectus corrupti necessitatibus mollitia, in illum fuga doloribus aspernatur id adipisci commodi, maiores nihil nisi animi alias veritatis debitis itaque quam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, reiciendis quo nemo maxime labore repudiandae doloremque quos error incidunt in, aut saepe quaerat eveniet temporibus fuga totam ipsum adipisci fugit. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias tempora quas voluptatum vitae nobis ullam esse aspernatur commodi amet consequatur consectetur earum maxime id, deleniti sint veniam, reprehenderit ea. </p>
 
         <div>
-                <form class="mb-5" action="{% url 'comment_create' post.pk %}" method="post">
-                {% csrf_token %}
-                          <input class="input" type="text" name="content" placeholder="Leave a comment!" maxlength="1000" required />
-                {% comment %} <input type="hidden" value=> {% endcomment %}
-                <input type="submit" value="Submit">
-                </form>
 
-                {% for post_comment in post_comments %}
-                   <div>
-                     {{post_comment.content}} 
-                     <a href="{% url 'profile_view_other' post_comment.user.profile.pk%}">{{post_comment.user}}</a>
-                     {{post_comment.user.profile.avatar}} 
-                     {{post_comment.created_at}}
+        </div>
+    </div>
+    <div class="container" id="title">
+        <form class="mb-5" action="{% url 'comment_create' post.pk %}" method="post">
+            {% csrf_token %}
+            <div class="container d-flex">
+            <img src="{{user.profile.avatar}}" alt="" height = 50px width = 50px style="border-radius:100px;">
+            <div class="input-group">
+            <input class="input form-control ms-3" type="text" name="content" placeholder="Leave a comment!" maxlength="1000" required />
+            <input class="btn btn-outline-secondary" type="submit" value="Submit" id="ok-btn">
+            </div>
+            </div>
+        </form>
+            <p>{{post_comments_count}} comments</p>
+
+            {% for post_comment in post_comments %}
+        <div>
+            <div class="container d-flex">
+                <img src="{{post_comment.user.profile.avatar}}" alt="" height = 50px width = 50px>
+                <div class="container">
+                    <div class="container d-flex">
+                        <a href="{% url 'profile_view_other' post_comment.user.profile.pk%}">{{post_comment.user}}</a>
+                        <p class="ms-2">posted {{post_comment.created_at|timesince}} ago</p>
                     </div>
-                        <div>
-                            <a href="{% url 'comment_update' post.pk post_comment.pk%}">Update Comment</a>
-                            <form action="{% url 'comment_delete' post.pk post_comment.pk%}" method="POST">
-                            {% csrf_token %}
-                            <input type="submit" value="DELETE COMMENT">
-                            </form>
+                    <p class="ms-3">{{post_comment.content}}</p>
+                </div>
+                <div>
+                    {% if user.is_authenticated %}
+                    {% if user.username == post_comment.user.username%}
+                        <div class="container d-flex mt-2">
+                        <a class="btn me-md-2" href="{% url 'comment_update' post.pk post_comment.pk%}" id="edit-btn"><i class="fas fa-edit"></i></a>
+                        <form action="{% url 'comment_delete' post.pk post_comment.pk%}" method="POST">
+                        {% csrf_token %}
+                        <button class="btn me-md-2" type="submit" id="delete_post"><i class="fas fa-times fa-lg"></i></button>
+                        </form>
                         </div>
-                {% endfor %}
-                <div>{{post_comments_count}}</div>
 
+                        {% endif %}
+                        {% endif %}
+                </div>
+                    {% endfor %}
+            </div>
         </div>
     </div>
 
