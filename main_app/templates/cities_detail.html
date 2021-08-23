@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load widget_tweaks %}
+{% load humanize %}
 
 {% block content %}
 
@@ -96,11 +97,11 @@
                 {% for city_post in city_posts %}
                 <a href="{% url 'post_detail' city_post.pk %}" id="post-card">
                 <div class="col d-flex mt-2" id="post-card">
-                    <img src="{{city_post.user.profile.avatar}}" alt="" srcset="" width=150px>
+                    <img class="mt-4 ms-2" src="{{city_post.user.profile.avatar}}" alt="" srcset="" height=75px width=75px id="post-avatar">
                     <div class="container mt-3">
                         <h5 style="color:white">{{city_post.title}}</h5>
                         <h5 style="color:white" id="content">{{city_post.content}}</h5>
-                        <p>{{city_post.created_at|date:"M j, Y"}}</p>
+                        <p>posted {{city_post.created_at|timesince}} ago</p>
                     </div>
                 </div>
                 </a>

@@ -2,14 +2,14 @@
 
 {% block content %}
 
-<div class="row mt-5" id="title">
-    <div class="col-md-4 d-flex flex-column align-items-center">
+<div class="mt-5 mb-5 d-flex" id="title">
+    <div class="col-md-4 d-flex flex-column align-items-center" id="profile-card">
 
         <h3>{{profile.user.username}}'s Profile</h3>
 
-        <img class="m-3" src="{{profile.avatar}}" alt="" srcset="" width=250px>
-        <p>Current City: {{profile.current_city}}</p>
-        <p>Join Date: {{profile.user.date_joined}}</p>
+        <img class="" src="{{profile.avatar}}" alt="" srcset="" width=250px>
+        <p>Favorite City: {{profile.current_city}}</p>
+        <p>Member since {{profile.user.date_joined|date:"M j, Y"}}</p>
         {% if profile_is_user  %}
         <a class="btn" data-bs-toggle="modal" data-bs-target="#update-modal" id="update">Update Profile</a>
         {% endif %}
