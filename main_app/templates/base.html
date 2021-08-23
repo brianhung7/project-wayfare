@@ -86,15 +86,15 @@
                         {% csrf_token %}
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
-                            <input style="color:black" type="text" class="form-control" placeholder="Username" name= "username" id="username" aria-label="Username" aria-describedby="basic-addon1">
+                            <input style="color:black" type="text" class="form-control" placeholder="Username" name= "username" id="username" aria-label="Username" aria-describedby="basic-addon1" required>
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
-                                <input type="password" class="form-control" placeholder="Password" name="password1" aria-label="Password" aria-describedby="basic-addon1" id="password1">
+                                <input type="password" class="form-control" placeholder="Password" name="password1" aria-label="Password" aria-describedby="basic-addon1" id="password1" required> 
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
-                                <input type="password" class="form-control" placeholder="Confirm Password" name="password2" aria-label="Password" aria-describedby="basic-addon1" id="password2">
+                                <input type="password" class="form-control" placeholder="Confirm Password" name="password2" aria-label="Password" aria-describedby="basic-addon1" id="password2" required>
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-city"></i></span>
