@@ -44,13 +44,13 @@
                      {{post_comment.user.profile.avatar}} 
                      {{post_comment.created_at}}
                     </div>
-                    <div>
-                        <a href="{% url 'comment_update' post.pk post_comment.pk%}">Update Comment</a>
-                        <form action="{% url 'comment_delete' post.pk post_comment.pk%}" method="POST">
-                        {% csrf_token %}
-                        <input type="submit" value="DELETE COMMENT">
-                        </form>
-                    </div>
+                        <div>
+                            <a href="{% url 'comment_update' post.pk post_comment.pk%}">Update Comment</a>
+                            <form action="{% url 'comment_delete' post.pk post_comment.pk%}" method="POST">
+                            {% csrf_token %}
+                            <input type="submit" value="DELETE COMMENT">
+                            </form>
+                        </div>
                 {% endfor %}
                 <div>{{post_comments_count}}</div>
 

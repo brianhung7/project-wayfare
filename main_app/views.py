@@ -112,6 +112,7 @@ class PostDetail(DetailView):
         context['post_comments'] = comment_info
         context['post_comments_count'] = len(comment_info)
         
+        
         return context
 
 class MainUserCity(View):

@@ -109,11 +109,11 @@
                                 <option value="7">New York City</option>
                             </select>
                         </div>
-                        {% comment %} <div class="input-group mb-3">
+                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-user-tie"></i></span>
-                            {{ profile_form.avatar|add_class:"form-control"|attr:"placeholder:Avatar"}}
-                        </div> {% endcomment %}
-                        <input type="hidden" name="avatar" value="https://i.imgur.com/eYlOXmc.png" maxlength="500" placeholder="Avatar" class="form-control" required="" id="id_avatar">
+                            <input type="text" name="avatar" value="https://i.imgur.com/eYlOXmc.png" maxlength="500" placeholder="Avatar Image Link" class="form-control" required="" id="id_avatar">
+                        </div> 
+                        {% comment %} <input type="hidden" name="avatar" value="https://i.imgur.com/eYlOXmc.png" maxlength="500" placeholder="Avatar" class="form-control" required="" id="id_avatar"> {% endcomment %}
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">Close</button>
