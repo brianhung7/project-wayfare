@@ -4,18 +4,18 @@
 }
 
 body {
-    background: #283438;
+    background: linear-gradient(to bottom, #b0f3ec, #ebfcf8);
     color: #2b3e44;
     height: 100vh - 72px;
     margin-bottom: 90px;
 }
 
-.body-container___base {
+/* .body-container___base {
     height: 100%; 
-}
+} */
 
 .navbar {
-    background-color: #2b3e44;
+    background-color: #b0f3ec;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -24,7 +24,7 @@ body {
 }
 
 #nav-brand {
-    color: #ebfcf8;
+    color: #2b3e44;
     font-family: 'Montserrat', sans-serif;
     font-size: 1.5rem;
     font-weight: 900;
@@ -40,8 +40,9 @@ body {
 }
 
 #account-login {
-    background-color: #2b3e44;
-    color: #ebfcf8;
+    background: radial-gradient(100% 186.43% at 100% 0%, rgba(255, 255, 255, 0.4) 0%, rgba(196, 196, 196, 0) 100%);
+    backdrop-filter: blur(30px);
+    color: #2b3e44;
     text-decoration: none;
     box-shadow: 4px 2px 4px 4px rgba(0,0,0,0.05);
     border-radius: 5px;
@@ -49,7 +50,7 @@ body {
 }
 
 #username {
-    color: #ebfcf8;
+    color: #2b3e44;
 }
 
 #sign-in-modal {
@@ -106,12 +107,12 @@ body {
 }
 
 #title {
-    color: #ebfcf8;
+    color: #2b3e44;
     font-family: 'Montserrat', sans-serif;
 }
 
 #content {
-    color: #ebfcf8;
+    color: #2b3e44;
     font-family: 'Esteban', serif;
 }
 
@@ -160,11 +161,13 @@ body {
 }
 
 #city-card {
-    background-color: #2b3e44;
-    color: #ebfcf8;
+    background: radial-gradient(100% 186.43% at 100% 0%, rgba(255, 255, 255, 0.4) 0%, rgba(196, 196, 196, 0) 100%);
+    backdrop-filter: blur(30px);
+    color: #2b3e44;
     text-decoration: none;
     box-shadow: 4px 2px 4px 4px rgba(0,0,0,0.05);
     border-radius: 5px;
+    /* border: #2b3e44 1px solid; */
 }
 
 #city-card-img {
@@ -172,8 +175,9 @@ body {
 }
 
 #post-card {
-    background-color: #2b3e44;
-    color: #ebfcf8;
+    background: radial-gradient(100% 186.43% at 100% 0%, rgba(255, 255, 255, 0.4) 0%, rgba(196, 196, 196, 0) 100%);
+    backdrop-filter: blur(30px);
+    color: #2b3e44;
     text-decoration: none;
     box-shadow: 4px 2px 4px 4px rgba(0,0,0,0.05);
     border-radius: 5px;
@@ -190,12 +194,12 @@ body {
 }
 
 #city-view-image{
-    border:5px solid #B0F3EC
+    border:5px solid #5ccbaf;
 }
 
 footer{
-    background-color: #2b3e44;
-    color: #ebfcf8;
+    background-color: #ebfcf8;
+    color: #2b3e44;
     display: inline-block;
     font-family: 'Montserrat', sans-serif;
     position: fixed;

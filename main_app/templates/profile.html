@@ -62,7 +62,7 @@
         <div class="col">
         {% for post in posts %}
             <a href="{% url 'post_detail' post.pk %}" id="post-card">
-                <div class="col d-flex mt-3" id="post-card">
+                <div class="col d-flex mt-3" id="post-card" style="border:3px solid #B0F3EC">
                     <img class="m-2" src="{{post.city.img}}" alt="" srcset="" width=150px>
                     <div class="container mt-3">
                         <h5 id="title">{{post.city.name}}</h5>
