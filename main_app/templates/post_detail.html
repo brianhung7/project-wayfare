@@ -29,6 +29,28 @@
         </div>
         <p class="mx-5 mt-3" style="width:70%;line-height:30px" id="content">{{post.content}} Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem delectus corrupti necessitatibus mollitia, in illum fuga doloribus aspernatur id adipisci commodi, maiores nihil nisi animi alias veritatis debitis itaque quam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, reiciendis quo nemo maxime labore repudiandae doloremque quos error incidunt in, aut saepe quaerat eveniet temporibus fuga totam ipsum adipisci fugit. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias tempora quas voluptatum vitae nobis ullam esse aspernatur commodi amet consequatur consectetur earum maxime id, deleniti sint veniam, reprehenderit ea. </p>
 
+        <div>
+                <form class="mb-5" action="{% url 'comment_create' post.pk %}" method="post">
+                {% csrf_token %}
+                          <input
+            class="input"
+            type="text"
+            name="content"
+            placeholder="content"
+            required
+          />
+                {% comment %} <input type="hidden" value=> {% endcomment %}
+                <input type="submit" value="Submit">
+                </form>
+
+                {% for post_comment in post_comments %}
+                   <div>
+                     {{post_comment.content}} {{post_comment.user}} {{post_comment.user.profile.avatar}} {{post_comment.created_at}}
+                    </div>
+                {% endfor %}
+                {{post_comments_count}}
+
+        </div>
     </div>
 
     <div class="modal" tabindex="-1" id="post-update-modal">
