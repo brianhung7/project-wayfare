@@ -181,7 +181,8 @@ class ProfileViewOther(DetailView):
     template_name = 'profile_other.html'
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['posts'] = Post.objects.filter(user_id=kwargs['object'].pk)
+        found_user_id = Profile.objects.get(id=kwargs['object'].user.id)
+        context['posts'] = Post.objects.filter(user_id=found_user_id.pk)
         context['cities'] = City.objects.all
         if self.request.user.profile.pk == self.kwargs['pk']:
             context['profile_is_user'] = True
