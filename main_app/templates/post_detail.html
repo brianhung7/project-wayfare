@@ -10,7 +10,7 @@
             <div class="container-fluid d-flex" >
                 <a href="{% url 'profile_view_other' post.user.profile.pk%}"><img src="{{post.user.profile.avatar}}" alt="" srcset="" height = 50px width = 50px id="post-avatar">
                 <div>
-                    <h6 class="ms-3" style="color:#5ccbaf">{{post.user.username}}</h6></a>
+                    <h6 class="ms-3" style="color:#10a770">{{post.user.username}}</h6></a>
                     <h7 class="ms-3">posted {{post.created_at|timesince}} ago</h7>
                 </div>
             </div>
@@ -48,12 +48,12 @@
 
             {% for post_comment in post_comments %}
         <div>
-            <div class="container">
-            <div class="container d-flex" id="post-card">
-                <img src="{{post_comment.user.profile.avatar}}" alt="" height = 50px width = 50px style="border-radius:100px;">
-                <div class="container">
+            <div class="container mb-3">
+            <div class="container d-flex" style="border:3px solid #B0F3EC" id="post-card">
+                <img class="mt-4" src="{{post_comment.user.profile.avatar}}" alt="" height = 50px width = 50px style="border-radius:100px;">
+                <div class="container mt-3">
                     <div class="container d-flex">
-                        <a href="{% url 'profile_view_other' post_comment.user.profile.pk%}">{{post_comment.user}}</a>
+                        <a href="{% url 'profile_view_other' post_comment.user.profile.pk%}" style="color:#10a770">{{post_comment.user}}</a>
                         <p class="ms-2">posted {{post_comment.created_at|timesince}} ago</p>
                     </div>
                     <p class="ms-3">{{post_comment.content}}</p>
@@ -61,7 +61,7 @@
                 <div>
                     {% if user.is_authenticated %}
                     {% if user.username == post_comment.user.username%}
-                        <div class="container d-flex mt-2">
+                        <div class="container d-flex mt-4">
                         <a class="btn me-md-2" href="{% url 'comment_update' post.pk post_comment.pk%}" id="edit-btn"><i class="fas fa-edit"></i></a>
                         <form action="{% url 'comment_delete' post.pk post_comment.pk%}" method="POST">
                         {% csrf_token %}
