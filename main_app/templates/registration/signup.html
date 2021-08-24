@@ -12,7 +12,7 @@
                   {% csrf_token %}
                 <div class="input-group mb-3 px-3">
                   <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
-                  {{ signup_form.username|add_class:"form-control"}}
+                  {{ signup_form.username|add_class:"form-control"|attr:"placeholder:Username"}}
                 </div>
                 <div class="input-group mb-3 px-3">
                   <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
@@ -23,7 +23,7 @@
                   {{ signup_form.password2|add_class:"form-control"|attr:"placeholder:Confirm Password" }}
                 </div>
                 <div class="input-group mb-3 px-3">
-                  <span class="input-group-text" id="basic-addon1"><i class="fas fa-city"></i></span>
+                  <span class="input-group-text dropdown-toggle" id="basic-addon1"><i class="fas fa-city"></i></span>
                   <select class="form-control" name="current_city" required="" id="id_current_city form_two">
                     <option value selected>Select Favorite City</option>
                     <option value="1">San Francisco</option>
@@ -37,7 +37,7 @@
                 </div>
                 <div class="input-group mb-3 px-3">
                   <span class="input-group-text" id="basic-addon1"><i class="fas fa-user-tie"></i></span>
-                  {{ profile_form.avatar|add_class:"form-control"}}
+                  {{ profile_form.avatar|add_class:"form-control"|attr:"placeholder:Avatar Image Link"}}
                 </div>
                 <input class="btn px-3 py-1" type="submit" value="Sign Up" id="ok-btn">    
             </div>
