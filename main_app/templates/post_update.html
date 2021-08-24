@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        {% if user.username == post_creator %}
+            <h1 class='mt-5' id='title' style='text-align:center'>Update Post</h1>
+            <div class="mt-5" style="width:400px; background-color:white;margin:auto;border:5px solid black;border-radius:10px"  >
+                <form method="POST">
+                <div class="d-flex align-items-center flex-column my-2">
+                    {% csrf_token %}
+                    <div class="input-group my-3 d-flex justify-content-center">
+                        <span class="input-group-text " id="basic-addon1"><i class="fas fa-edit"></i></span>
+                        {{form.title}}
+                    </div>
+                    <div class="input-group mb-3 d-flex justify-content-center">
+                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-quote-right"></i></span>
+                        {{form.content}}
+                    </div>
+                    <div class="input-group mb-1 d-flex justify-content-center">
+                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-city"></i></span>
+                        {{form.city}}
+                    </div>           
+                    <input class="px-3 py-2 my-3 btn btn-success" type="submit" value="Update Post">
+                </div>
+                </form>
+            </div>
+        {% else %}
+            <h1 style="color: white">You are not authorized to access this information</h1>
+        {% endif %}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="mt-5" style="width:400px; background-color:white;margin:auto;border:5px solid black;border-radius:10px"  >
+        <form action="{% url 'post_create' %}" method="POST">
+            <div class="d-flex align-items-center flex-column my-2">
+                {% csrf_token %}
+
+                {{form}}
+                <input class="px-3 py-2 my-4 btn btn-success" type="submit" value = "Create New Post">
+            </div>
+        </form>
+    </div>
+{% endblock %}

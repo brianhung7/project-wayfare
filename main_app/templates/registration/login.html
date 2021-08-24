@@ -1,0 +1,37 @@
+{% extends 'base.html' %} 
+{% load widget_tweaks %}
+
+{% block content %}
+
+<h1 id="title" class='mt-5' style="text-align:center">Please Sign In</h1>
+
+{% if user.is_authenticated %}
+    <h2 class="my-5" style="color:white;text-align:center">{{user.username}} you are already logged in. Please <a href="{% url 'logout' %}">Logout.</a></h2>
+
+{% else %}
+  <div style="height:70vh;">
+  <div class="mt-5 pt-2 pb-2" style="width:400px;margin:auto;border-radius:5px;" id="account-login">
+    <form class="m-3" method="post" action="{% url 'login' %}">
+      <div class="d-flex align-items-center flex-column my-4">
+        {% csrf_token %} 
+        <div class="input-group mb-3 px-3">
+          <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
+          {{ form.username|add_class:"form-control"|attr:"placeholder:Username" }}
+        </div>
+        <div class="input-group mb-3 px-3">
+          <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
+          {{ form.password|add_class:"form-control"|attr:"placeholder:Password" }}
+        </div>
+        {{profile_form.as_p}}
+        <input class="px-3 py-1 btn" type="submit" class="button" value="Log In" id="signin"/>
+        <input type="hidden" name="next" value="{{ next }}" />
+      </div>
+    </form>
+  </div>
+  </div>
+{% endif %}
+
+
+
+
+{% endblock %}

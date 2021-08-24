@@ -1,0 +1,237 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(to bottom, #b0f3ec, #ebfcf8);
+    color: #2b3e44;
+    height: 100vh;
+    margin-bottom: 90px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.body-container___base {
+    height: 100%;
+    overflow: auto;
+}
+
+.body-container___base::-webkit-scrollbar {
+    display: none;
+}
+
+.navbar {
+    background-color: #b0f3ec;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nav-bar___base {
+    max-width: 1500px;
+}
+
+#nav-brand {
+    color: #2b3e44;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+/* .btn:hover{
+    box-shadow: 0 0 20px 5px black;
+} */
+
+.modal-dialog {
+    color: #2b3e44;
+}
+
+#account-login {
+    background: radial-gradient(100% 186.43% at 100% 0%, rgba(255, 255, 255, 0.4) 0%, rgba(196, 196, 196, 0) 100%);
+    backdrop-filter: blur(30px);
+    color: #2b3e44;
+    text-decoration: none;
+    box-shadow: 4px 2px 4px 4px rgba(0,0,0,0.05);
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#username {
+    color: #2b3e44;
+}
+
+#sign-in-modal {
+    font-family: 'Montserrat', sans-serif;
+}
+
+#sign-up-modal {
+    font-family: 'Montserrat', sans-serif;
+}
+
+#signin {
+    background-color: #5ccbaf;
+    color: #ebfcf8;
+}
+
+#signup {
+    background-color: #5ccbaf;
+    color: #ebfcf8;
+}
+
+#profile {
+    background-color: #5ccbaf;
+    color: #ebfcf8;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#logout {
+    background-color: #5ccbaf;
+    color: #ebfcf8;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#close {
+    background-color: #9caab3;
+    border: none;
+    color: #ebfcf8;
+}
+
+#ok-btn {
+    background-color: #5ccbaf;
+    border: none;
+    color: #ebfcf8;
+}
+
+.carousel-container___home {
+    width: 100%;
+}
+
+.carousel-item > img {
+    max-height: 600px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    max-width: 2000px;
+}
+
+#title {
+    color: #2b3e44;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#content {
+    color: #2b3e44;
+    font-family: 'Esteban', serif;
+}
+
+#prof-post {
+    width: 1000px;
+}
+
+#update {
+    background-color: #5ccbaf;
+    color: #ebfcf8;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#edit-btn{
+    background-color: #5ccbaf;
+    border: none;
+    color: #ebfcf8;
+}
+
+#delete_post {
+    background-color: #cb5c5c;
+    border: none;
+    color: #ebfcf8;
+}
+
+#post-btn{
+    background-color: #5ccbaf;
+    color: #ebfcf8;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#post-avatar {
+    border-radius: 100px;
+}
+
+/* .card-body > .card-title {
+    color: #2b3e44
+}
+
+.card-body > #content {
+    color: #2b3e44
+} */
+
+#city-column {
+    padding-left: 0;
+}
+
+#city-card {
+    background: radial-gradient(100% 186.43% at 100% 0%, rgba(255, 255, 255, 0.4) 0%, rgba(196, 196, 196, 0) 100%);
+    backdrop-filter: blur(30px);
+    color: #2b3e44;
+    text-decoration: none;
+    box-shadow: 4px 2px 4px 4px rgba(0,0,0,0.05);
+    border-radius: 5px;
+    /* border: #2b3e44 1px solid; */
+}
+
+#city-card-img {
+    width: 175px;
+}
+
+#post-card {
+    background: radial-gradient(100% 186.43% at 100% 0%, rgba(255, 255, 255, 0.4) 0%, rgba(196, 196, 196, 0) 100%);
+    backdrop-filter: blur(30px);
+    color: #2b3e44;
+    text-decoration: none;
+    box-shadow: 4px 2px 4px 4px rgba(0,0,0,0.05);
+    border-radius: 5px;
+}
+
+.card {
+    border: none;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.card-body {
+    background-color: #2b3e44;
+}
+
+#city-view-image{
+    border:5px solid #5ccbaf;
+}
+
+footer{
+    background-color: #ebfcf8;
+    color: #2b3e44;
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    position: fixed;
+    top: auto;
+    width: 100%;
+    bottom:0;
+}
+
+@media (min-width: 1500px) {
+    .carousel-container___home{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+    .carousel{
+        width: 1500px;
+        
+    }
+}
+
+#about-profile-pic{
+    border-radius: 100px;
+}
+
+#about-icon {
+    text-decoration: none;
+    color: #10a770;
+}

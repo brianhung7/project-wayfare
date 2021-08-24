@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block content %}
+    <div class="d-flex align-items-center flex-column mb-5" id="title">
+        <img src="{{post.city.img}}" alt="" srcset="" width = 100% height=500px>
+        <h3 class="mt-2">{{post.title}}</h3>
+        <h3>{{post.city.name}}</h3>
+        <div class="container-fluid d-flex justify-content-between" style="width:70%">
+            <div class="container-fluid d-flex" >
+                <a href="{% url 'profile_view_other' post.user.profile.pk%}"><img src="{{post.user.profile.avatar}}" alt="" srcset="" height = 50px width = 50px id="post-avatar">
+                <div>
+                    <h6 class="ms-3" style="color:#10a770">{{post.user.username}}</h6></a>
+                    <h7 class="ms-3">posted {{post.created_at|timesince}} ago</h7>
+                </div>
+            </div>
+            <!-- START: check if the user.is_authenticated and if user.username = post_creator -->
+            {% if user.is_authenticated %}
+                {% if user.username == post_creator %}
+                <div class="container-fluid d-flex justify-content-end">
+                    <div >
+                        <a class="btn me-md-2" href="" data-bs-toggle="modal" data-bs-target="#post-update-modal" id="edit-btn"><i class="fas fa-edit"></i></a>
+                        <button class="btn me-md-2" type="button" data-bs-toggle="modal" data-bs-target="#delete-post-modal" id="delete_post"><i class="fas fa-times fa-lg"></i></button>
+                    </div>
+                </div>
+                {% endif %}
+            {% endif %}
+            <!-- END -->
+        </div>
+        <p class="mx-5 mt-3" style="width:70%;line-height:30px" id="content">{{post.content}} Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem delectus corrupti necessitatibus mollitia, in illum fuga doloribus aspernatur id adipisci commodi, maiores nihil nisi animi alias veritatis debitis itaque quam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, reiciendis quo nemo maxime labore repudiandae doloremque quos error incidunt in, aut saepe quaerat eveniet temporibus fuga totam ipsum adipisci fugit. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias tempora quas voluptatum vitae nobis ullam esse aspernatur commodi amet consequatur consectetur earum maxime id, deleniti sint veniam, reprehenderit ea. </p>
+
+        <div>
+
+        </div>
+    </div>
+    <div class="container" id="title">
+        <form class="mb-5" action="{% url 'comment_create' post.pk %}" method="post">
+            {% csrf_token %}
+            <div class="container d-flex">
+            <img src="{{user.profile.avatar}}" alt="" height = 50px width = 50px style="border-radius:100px;">
+            <div class="input-group">
+            <input class="input form-control ms-3" type="text" name="content" placeholder="Leave a comment!" maxlength="1000" required />
+            <input class="btn btn-outline-secondary" type="submit" value="Submit" id="ok-btn">
+            </div>
+            </div>
+        </form>
+            <p>{{post_comments_count}} comments</p>
+
+            {% for post_comment in post_comments %}
+        <div>
+            <div class="container mb-3">
+            <div class="container d-flex" style="border:3px solid #B0F3EC" id="post-card">
+                <img class="mt-4" src="{{post_comment.user.profile.avatar}}" alt="" height = 50px width = 50px style="border-radius:100px;">
+                <div class="container mt-3">
+                    <div class="container d-flex">
+                        <a href="{% url 'profile_view_other' post_comment.user.profile.pk%}" style="color:#10a770">{{post_comment.user}}</a>
+                        <p class="ms-2">posted {{post_comment.created_at|timesince}} ago</p>
+                    </div>
+                    <p class="ms-3">{{post_comment.content}}</p>
+                </div>
+                <div>
+                    {% if user.is_authenticated %}
+                    {% if user.username == post_comment.user.username%}
+                        <div class="container d-flex mt-4">
+                        <a class="btn me-md-2" href="{% url 'comment_update' post.pk post_comment.pk%}" id="edit-btn"><i class="fas fa-edit"></i></a>
+                        <form action="{% url 'comment_delete' post.pk post_comment.pk%}" method="POST">
+                        {% csrf_token %}
+                        <button class="btn me-md-2" type="submit" id="delete_post"><i class="fas fa-times fa-lg"></i></button>
+                        </form>
+                        </div>
+
+                        {% endif %}
+                        {% endif %}
+                </div>
+            </div>
+            </div>
+        </div>
+                    {% endfor %}
+    </div>
+
+    <div class="modal" tabindex="-1" id="post-update-modal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Update Post</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">    
+                                <form method="POST" action="{% url 'post_update' post.pk %}">
+                                <input type="hidden" name="form_name" value="post_update">  
+                                {% csrf_token %}
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon1"><i class="far fa-edit"></i></span>
+                                    <input type="text" class="form-control" placeholder="Post Title" name= "title" id="post-title" aria-label="Title" aria-describedby="basic-addon1" value="{{post.title}}" style="color:black" minlength="1" maxlength="200" required>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-quote-right"></i></span>
+                                    <textarea type="text" class="form-control" placeholder="Content" name= "content" id="post-content" aria-label="Content" aria-describedby="basic-addon1" value="{{post.content}}" minlength="1" required>{{post.content}}</textarea>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text dropdown-toggle" id="basic-addon1"><i class="fas fa-city"></i></span>
+                                    <select class="form-control" name="city" required="">
+                                    {% for city in city_list %}
+                                    {% if post.city.pk == city.id %}
+                                        <option value="{{post.city.pk}}" selected="">{{post.city}}</option>
+                                    {% else %}
+                                        <option value="{{city.id}}">{{city.name}}</option>
+                                    {% endif %}
+                                    {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <input type="hidden" name="next" value="{{ next }}" />
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">Close</button>
+                                <input type="submit" class="btn" value="Update Post" id="ok-btn"/>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+    <div class="modal" tabindex="-1" id="delete-post-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Are you sure you want to delete '{{post.title}}'?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>    
+                        <form method="post" action="{% url 'post_delete' post.pk %}">
+                            {% csrf_token %}
+
+                            <input type="hidden" name="next" value="{{ next }}" />
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">Close</button>
+                            <input type="submit" class="btn" value="Delete Post" id="delete_post"/>
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

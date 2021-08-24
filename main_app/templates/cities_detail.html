@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load humanize %}
+
+{% block content %}
+
+
+    <div class="container d-flex mt-5 mb-5" id="title">
+        <div class="container" style="flex-shrink:1.5">
+            <div class="col">
+                <h1>Cities</h1>
+                <div class="container flex-column" id="city-column">
+                    {% for city_item in city_list %}
+                    <a href="{% url 'cities_view' city_item.pk %}" id="city-card">
+                        {% if city.pk == city_item.pk %}
+                            <div class="container d-flex mt-3" id="city-card" style="border:5px solid #5CCBAF">
+                        {% else %}
+                            <div class="container d-flex mt-2" id="city-card" style="border:3px solid #B0F3EC">
+                        {% endif %}
+
+                        <div class="container mt-2 mb-2" id="city-card-img">
+                            <img src="{{city_item.img}}" alt="" width=150px>
+                        </div>
+                        <div class="container mt-4" id="city-names">
+                            <h5 class="disabled">{{city_item.name}}</h5>
+                            <p class="">{{city_item.country}}</p>
+                        </div>
+                    </div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="containter d-flex">
+                <div class="container">
+                    <h1>{{city.name}}</h1>
+                    <h4>{{city.country}}</h4> 
+                </div>
+                <div class="container" >
+                    <img src="{{city.img}}" alt="" width=300px id="city-view-image">
+                </div>
+            </div>
+            <div class="d-flex justify-content-end mt-3">
+                {% if user.is_authenticated %}
+                    <button type="button " class="btn me-3" data-bs-toggle="modal" data-bs-target="#post-modal" id="post-btn"><i class="fas fa-plus-square"></i></button>
+                {% endif %}
+                <div class="modal" tabindex="-1" id="post-modal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Create Post</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">    
+                                <form method="POST" action="{% url 'post_create' %}">
+                                <input type="hidden" name="form_name" value="post_create">  
+                                {% csrf_token %}
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon1"><i class="far fa-edit"></i></span>
+                                    <input type="text" class="form-control" placeholder="Post Title" name= "title" id="post-title" aria-label="Title" aria-describedby="basic-addon1" value="{{post.title}}" style="color:black" minlength="1" maxlength="200" required>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-quote-right"></i></span>
+                                    <textarea type="text" class="form-control" placeholder="Content" name= "content" id="post-content" aria-label="Content" aria-describedby="basic-addon1" value="{{post.content}}" minlength="1" required></textarea>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text dropdown-toggle" id="basic-addon1"><i class="fas fa-city"></i></span>
+                                    <select class="form-control" name="city" required="">
+                                    {% comment %}
+                                        Following lines for multiple city selection, defaults to current city view
+                                    {% endcomment %}
+                                    {% for city_item in city_list %}
+                                        {% if city_item.pk == city.id %}
+                                            <option value="{{city.id}}" selected="">{{city.name}}</option>
+                                        {% else %}
+                                            <option value="{{city_item.pk}}">{{city_item.name}}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                        {% comment %} <option value="{{city.id}}">{{city.name}}</option> {% endcomment %}
+                                    </select>
+                                </div>
+                            </div>
+                            <input type="hidden" name="next" value="{{ next }}" />
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">Close</button>
+                                <input type="submit" class="btn" value="Post" id="ok-btn"/>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="container">
+                <h1>Posts</h1>
+                {% for city_post in city_posts %}
+                <a href="{% url 'post_detail' city_post.pk %}" id="post-card">
+                <div class="col d-flex mt-3" id="post-card" style="border:3px solid #B0F3EC">
+                    <img class="mt-4 ms-2" src="{{city_post.user.profile.avatar}}" alt="" srcset="" height=75px width=75px id="post-avatar">
+                    <div class="container mt-3">
+                        <h5>{{city_post.title}}</h5>
+                        <h5 id="content">{{city_post.content}}</h5>
+                        <p>posted {{city_post.created_at|timesince}} ago</p>
+                    </div>
+                </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

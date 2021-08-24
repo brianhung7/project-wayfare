@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% comment %} <div class="m-5" style="width:500px; background: radial-gradient(100% 186.43% at 100% 0%, rgba(255, 255, 255, 0.4) 0%, rgba(196, 196, 196, 0) 100%);margin:auto;border-radius:5px" id="title">
+        <form method="POST" action="{% url 'comment_update' post comment.pk %}">
+        <div class="d-flex align-items-center flex-column my-4">
+            {% csrf_token %} 
+            <h1>Update Comment</h1>
+
+            <input  type="hidden" name="user_id" value="{{user.id}}"  id="form_two">
+            </div>
+            <textarea class="form-control" type="text" value="{{comment.content}}" name="content" aria-label="With textarea">{{comment.content}}</textarea>
+            
+            <div class="my-2">
+                <input type="submit" value="Update Comment">
+            </div>
+        </div>
+        </form>
+        </div> {% endcomment %}
+
+    <div style="height:70vh;">
+        <div class="mt-5 pt-2 pb-2" style="width:400px;margin:auto;border-radius:5px;" id="account-login">
+            <h2 class="mt-2 ms-2">Update Comment</h2>
+            <form class="m-3" method="post" action="{% url 'comment_update' post comment.pk %}">
+                <div class="d-flex align-items-center flex-column my-4">
+                {% csrf_token %} 
+                    <input  type="hidden" name="user_id" value="{{user.id}}"  id="form_two">
+                </div>
+                <textarea class="form-control mb-3" type="text" value="{{comment.content}}" name="content" aria-label="With textarea">{{comment.content}}</textarea>
+                <input class="px-3 py-1 btn" type="submit" class="button" value="Update Comment" id="ok-btn"/>
+                <input type="hidden" name="next" value="{{ next }}" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock  %}
