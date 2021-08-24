@@ -1,7 +1,5 @@
 # project-wayfare
 
-A README.md file with an explanation of what the project is and why you made it, your user stories, explanations of the technologies used, the approach taken, installation instructions, unsolved problems, the other components previously indicated (if applicable). In this project, also include your wireframes in the readme.
-
 ## Description
 Project wayfare is a city based blog where users can create blog articles about their travels. This app was made using Django and psql. 
 
