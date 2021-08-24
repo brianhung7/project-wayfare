@@ -24,8 +24,7 @@ Project wayfare is a city based blog where users can create blog articles about 
 3. Users must be authenticated to view any page besides the splash page.
 
 # Wireframes
-![Client supplied image for devs to reference](notion://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F96d7485d-f97e-4dfd-a26e-e7341d5f8818%2Fwireframes.png?table=block&id=ff181223-40d4-4e3f-a4dd-743dec886ec5&spaceId=2d8bbfbe-92b6-4c51-aa43-e64c639c7655&width=2690&userId=36bc6868-9cd6-4e4f-b888-eda74da3204e&cache=v2)
-
+![The wireframes](./project_imgs/Wire.png)
 # Photos
 ![The splash page](./project_imgs/Splash.png)
 ![The Profile page](./project_imgs/Profile.png)
