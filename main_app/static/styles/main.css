@@ -17,6 +17,10 @@ body {
     overflow: auto;
 }
 
+.body-container___base::-webkit-scrollbar {
+    display: none;
+  }
+  
 .navbar {
     background-color: #b0f3ec;
     font-family: 'Montserrat', sans-serif;
