@@ -230,3 +230,8 @@ footer{
 #about-profile-pic{
     border-radius: 100px;
 }
+
+#about-icon {
+    text-decoration: none;
+    color: #10a770;
+}
