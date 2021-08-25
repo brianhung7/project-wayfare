@@ -3,6 +3,8 @@
 ## Description
 Project wayfare is a city based blog where users can create blog articles about their travels. This app was made using Django and psql. 
 
+[Check out the app!](https://bestwayfarer.herokuapp.com/)
+
 ## User Stories
 ### Sprint one
 1. A user must be able to Login/sign up to the application from the home page. The navigation bar will host these buttons that when pressed, will display the modal to login/signup. 
