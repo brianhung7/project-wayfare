@@ -1,7 +1,7 @@
 # Project-Wayfarer
 
 ## Description
-Project Wayfarer is a full stack city blogging application built for a group of clients where users can create articles and make comments on their world travels. Clients provided wireframes, user stories, and sprints upon which our team was to execute their designed application. Utilizing pair programming and a collaborative environment, we exceeded client expectations within the 1 week deadline. Built with Django and PostgreSQL.
+Project Wayfarer is a full stack city blogging application built for a group of clients where users can create articles and make comments on their world travels. Clients provided wireframes, user stories, sprints, and design choices upon which our team was to execute their designed application. Utilizing pair programming and a collaborative environment, we exceeded client expectations within the 1 week deadline. Built with Django and PostgreSQL.
 
 [Check out the app!](https://bestwayfarer.herokuapp.com/) 
  
